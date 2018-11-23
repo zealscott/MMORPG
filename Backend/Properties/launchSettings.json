@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Backend": {
+      "commandName": "Project",
+      "commandLineArgs": "E:/git/MMORPG/Frontend/Assets/BEAssets/backend.conf"
+    }
+  }
+}
