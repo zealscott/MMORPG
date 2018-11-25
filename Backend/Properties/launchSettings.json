@@ -2,7 +2,7 @@
   "profiles": {
     "Backend": {
       "commandName": "Project",
-      "commandLineArgs": "E:/git/MMORPG/Frontend/Assets/BEAssets/backend.conf"
+      "commandLineArgs": "E:/MMORPG/Frontend/Assets/BEAssets/backend.conf"
     }
   }
 }

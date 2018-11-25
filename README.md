@@ -56,25 +56,36 @@ Unity Editor会在MMORPG\Frontend文件夹下创建Library文件夹，存放依�
 
 #### 安装依赖库
 
-Backend用到了[GeometRi](https://github.com/RiSearcher/GeometRi.CSharp)，一个用于空间计算的library。进入项目目录:
+Backend用到了[GeometRi](https://github.com/RiSearcher/GeometRi.CSharp)，一个用于空间计算的library。进入项目目录，在powershell中输入:
 
 ```
 dotnet add backend package GeometRi --version 1.3.5.3
 ```
 
+![54314289881](Doc/pic/GeometRi.png)
+
 #### 使用VS Build Backend
+
+打开Visual Studio，build backend：
+
+![buildBackend](Doc/pic/buildBackend.png)
 
 #### 启动Backend
 
 - 更改配置文件backend.conf，<assetPath>改成自己的配置
-（在MMORPG/Frontend/Assets/assets下，这个文件夹存的是从客户端导出的一些信息, 例如： 每个场景的阻档点，精灵出生点坐标等）
-- 打开MMORPG.sln,发布bakcend项目（配置中将路径修改为自己的配置）
-- 将backend设为启动项目，在VS中启动Backend.exe，命令行参数为配置文件路径
+（在MMORPG/Frontend/Assets/BEAssets下，这个文件夹存的是从客户端导出的一些信息, 例如： 每个场景的阻档点，精灵出生点坐标等）
+- 打开MMORPG.sln,发布bakcend项目
+  - 首先将setting指向自己的配置文件：
+    - ![54314488662](Doc/pic/settingBackend.png)
+  - 然后Publish：
+    - ![publishBackend](Doc/pic/publishBackend.png)
+- 将backend设为启动项目：
+  - ![54314505524](Doc/pic/StartPrj.png)
+- 在VS中启动Backend.exe，命令行参数为配置文件路径
 ```
 backend.exe [path_to_backend.conf]
 ```
-backend.exe运行大致如下：
->Backend start up and waiting for a connection on port 7777...
+![54314548145](Doc/pic/backendexe.png)
 
 #### 使用Unity3d Editor执行, 或build成APP执行
 - 选择场景：打开scene-level1/...
@@ -86,7 +97,7 @@ WASD移动
 右键锁定视角  
 
 # Architecture
-<img src="Doc/architecture.png" height=114></img>
+<img src="Doc/pic/architecture.png" height=114></img>
 
 # __Roadmap__
 
@@ -127,7 +138,7 @@ WASD移动
   - [x] 死亡
   - [x] 装备
   - [ ] 背包
-  
+
 ##### __精灵__
   - [x] 走路
   - [x] 攻击
