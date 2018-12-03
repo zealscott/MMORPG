@@ -149,10 +149,12 @@ namespace Backend.Network
             foreach (ChannelDelegate d in onAccept)
             {
                 //d.Invoke(channel);
-                CompleteEvent e = new CompleteEvent();
-                e.@delegate = d;
-                e.channel = channel;
-                e.message = null;
+                CompleteEvent e = new CompleteEvent()
+                {
+                    @delegate = d,
+                    channel = channel,
+                    message = null
+                };
                 CompleteQueue.Add(e);
             }
 

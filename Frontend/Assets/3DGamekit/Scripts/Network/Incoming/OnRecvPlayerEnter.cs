@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System;
 
 namespace Gamekit3D.Network
 {
@@ -15,7 +16,7 @@ namespace Gamekit3D.Network
             {// ignore enter scene message when debug mode
                 return;
             }
-            //Console.WriteLine("Receive Enter...");
+            Console.WriteLine("Receive Enter...");
             SPlayerEnter msg = message as SPlayerEnter;
             startup.PlayerEnter(msg.scene);
         }

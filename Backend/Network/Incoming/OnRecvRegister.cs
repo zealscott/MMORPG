@@ -9,10 +9,15 @@ namespace Backend.Network
     {
         private void OnRecvRegister(IChannel channel, Message message)
         {
-            // TODO ...
-            // write to database
             CRegister request = message as CRegister;
-            ClientTipInfo(channel, "TODO: write register info to database");
+
+            ConnectDB connect = new ConnectDB();
+            int result = connect.registerUser(request.user,request.password);
+
+            if (result == 0)
+                ClientTipInfo(channel, "User Name Exist!");
+            else
+                ClientTipInfo(channel, "Welcome!");
         }
     }
 }

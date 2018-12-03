@@ -19,7 +19,7 @@ namespace Gamekit3D.Network
         public bool gameScene = false;
 
         [Tooltip("address")]
-        public string address = "127.0.0.1";
+        public string address = "219.228.148.237";
 
         [Tooltip("port")]
         public short port = 7777;
@@ -56,8 +56,8 @@ namespace Gamekit3D.Network
                 if (connected)
                 {
                     // for debug only ...
-                    CLogin login = new CLogin();
-                    Send(login);
+                    //CLogin login = new CLogin();
+                    //Send(login);
                 }
                 SceneManager.sceneLoaded += RecvSceneLoaded;
             }

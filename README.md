@@ -81,76 +81,18 @@ dotnet add backend package GeometRi --version 1.3.5.3
     - ![publishBackend](Doc/pic/publishBackend.png)
 - 将backend设为启动项目：
   - ![54314505524](Doc/pic/StartPrj.png)
-- 在VS中启动Backend.exe，命令行参数为配置文件路径
-```
-backend.exe [path_to_backend.conf]
+- 在VS中启动Backend.exe，命令行参数为配置文件路径，如
+```shell
+ .\Backend.exe E:\\MMORPG\\Frontend\\Assets\\BEAssets\\backend.conf
 ```
 ![54314548145](Doc/pic/backendexe.png)
 
 #### 使用Unity3d Editor执行, 或build成APP执行
 - 选择场景：打开scene-level1/...
 - 点击上方小三角，进入调试
+- 点击左上角的File—>BuildSettings，进行build
 
 #### 输入
 WASD移动  
 左键点击进行攻击  
 右键锁定视角  
-
-# Architecture
-<img src="Doc/pic/architecture.png" height=114></img>
-
-# __Roadmap__
-
-##### __Asset导出__
-  - [x] Navmesh
-  - [x] 出生点坐标
-  - [x] Backend配置文件格式
-
-##### __网络__
-  - [x] 通信接口
-  - [x] 同屏全场景广播
-  - [ ] GRID广播
-
-##### __AI__
-  - [x] A\*寻路
-    - [x] 空间索引
-
-##### __登录和注册__
-  - [x] UI
-  - [ ] 登录
-  - [ ] 注册
-
-##### __商城__
-  - [x] UI
-  - [ ] 交易
-
-##### __聊天__
-  - [x] UI
-  - [ ] 聊天逻辑
-
-##### __主角__
-  - [x] 走路
-  - [x] 攻击精灵
-  - [ ] 攻击其它人
-  - [x] 跳跃
-  - [x] 受伤
-  - [x] 出生
-  - [x] 死亡
-  - [x] 装备
-  - [ ] 背包
-
-##### __精灵__
-  - [x] 走路
-  - [x] 攻击
-  - [x] 受伤
-  - [x] 出生
-  - [x] 死亡
-
-##### __物品__
-  - [ ] 可捡取物品
-  - [ ] 可破坏物品
-  - [ ] 机关
-  - [x] 装备
-
-##### __退出游戏__
-  - [x] Elegent Exit

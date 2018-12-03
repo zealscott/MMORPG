@@ -1,5 +1,6 @@
 ﻿using Common;
 using Backend.Game;
+using System.Data.Common;
 
 namespace Backend.Network
 {
@@ -8,16 +9,27 @@ namespace Backend.Network
         private void OnRecvLogin(IChannel channel, Message message)
         {
             CLogin request = message as CLogin;
-            SPlayerEnter response = new SPlayerEnter();
             string scene = "Level1";
-            response.user = request.user;
-            response.token = request.user;
-            response.scene = scene;
+            Player player = new Player(channel) { scene = scene };
+
+            // read from database
+            ConnectDB connect = new ConnectDB();
+            int result = connect.LogIn(request.user, request.password, ref player);
+            while (result == 0)
+            {
+                ClientTipInfo(channel, "Wrong UserName or Passwd!");
+                result = connect.LogIn(request.user, request.password, ref player);
+            }
+
+
+            SPlayerEnter response = new SPlayerEnter()
+            {
+                user = request.user,
+                token = request.user,
+                scene = scene
+            };
             channel.Send(response);
 
-            Player player = new Player(channel);
-            player.scene = scene;
-            // TODO read from database
             DEntity dentity = World.Instance.EntityData["Ellen"];
             player.FromDEntity(dentity);
             player.forClone = false;
