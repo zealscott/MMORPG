@@ -11,6 +11,10 @@ namespace Backend.Game
         public int maxHP;
         public int level;
         public int speed;
+        public int coin;
+        public int attack;
+        public int defense;
+        public int intelligence;
         public float invulnerableTime;
         public float hitAngle;
         public bool dead = false;
@@ -91,6 +95,10 @@ namespace Backend.Game
             aggressive = entity.aggressive;
             invulnerableTime = entity.invTime;
             hitAngle = entity.hitAngle;
+            coin = entity.coin;
+            attack = entity.attack;
+            defense = entity.defense;
+            intelligence = entity.intelligence;
             base.FromDEntity(entity);
         }
     }

@@ -9,6 +9,7 @@ namespace Backend.Network
     {
         private void OnRecvRegister(IChannel channel, Message message)
         {
+            Console.WriteLine("register!");
             CRegister request = message as CRegister;
 
             ConnectDB connect = new ConnectDB();

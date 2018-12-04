@@ -26,7 +26,9 @@ namespace Common
         S_SPRITE_DIE,
         S_PLAYER_DIE,
         S_TIP_INFO,
+        S_PLAYER_ATTRIBUTE,
         SEND,
+
 
         CBEGIN,
         C_LOGIN,

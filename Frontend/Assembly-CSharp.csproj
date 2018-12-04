@@ -158,6 +158,7 @@
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SFindPath.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SHit.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SJump.cs" />
+     <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SPlayerAttribute.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SPlayerDie.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SPlayerEnter.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SPlayerMove.cs" />
@@ -270,6 +271,7 @@
      <Compile Include="Assets\3DGamekit\Scripts\Game\Localization\TranslatedPhrases.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\Localization\TranslatedText.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\Localization\Translator.cs" />
+     <Compile Include="Assets\3DGamekit\Scripts\Game\Player\Player.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\Player\PlayerController.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\Player\PlayerMyController.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\Player\RespawnPlayer.cs" />
@@ -347,6 +349,7 @@
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvFindPath.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvHit.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvJump.cs" />
+     <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvPlayerAttribute.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvPlayerDie.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvPlayerEnter.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvPlayerMove.cs" />

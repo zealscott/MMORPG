@@ -8,7 +8,7 @@ public class RoleUI : MonoBehaviour
 {
 
     public TextMeshProUGUI HPValue;
-    public TextMeshProUGUI InteligenceValue;
+    public TextMeshProUGUI IntelligenceValue;
     public TextMeshProUGUI SpeedValue;
     public TextMeshProUGUI LevelValue;
     public TextMeshProUGUI AttackValue;
@@ -24,7 +24,8 @@ public class RoleUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        string hp = string.Format("{0}/{1}", Player.currentHP, 5);
+        HPValue.SetText(hp, true);
     }
 
     private void OnEnable()
@@ -37,6 +38,13 @@ public class RoleUI : MonoBehaviour
         }
         string hp = string.Format("{0}/{1}", m_damageable.currentHitPoints, m_damageable.maxHitPoints);
         HPValue.SetText(hp, true);
+
+        // debug
+        IntelligenceValue.SetText(Player.intelligence.ToString(), true);
+        SpeedValue.SetText(Player.speed.ToString(), true);
+        LevelValue.SetText(Player.level.ToString(), true);
+        AttackValue.SetText(Player.attack.ToString(), true);
+        DefenseValue.SetText(Player.defense.ToString(), true);
     }
 
     private void OnDisable()
@@ -53,7 +61,7 @@ public class RoleUI : MonoBehaviour
     void Test()
     {
         HPValue.text = "100";
-        InteligenceValue.text = "100";
+        IntelligenceValue.text = "100";
     }
 
     public void InitUI(PlayerController controller)

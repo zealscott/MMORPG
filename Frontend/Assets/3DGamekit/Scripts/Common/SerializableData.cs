@@ -87,6 +87,10 @@ namespace Common
         public float hitAngle;
         public int level;
         public int speed;
+        public int coin;
+        public int attack;
+        public int defense;
+        public int intelligence;
         public bool aggressive;
         public bool forClone;
         public DEntity parent;

@@ -1,6 +1,7 @@
 ﻿using Common;
 using Backend.Game;
 using System.Data.Common;
+using System;
 
 namespace Backend.Network
 {
@@ -8,19 +9,20 @@ namespace Backend.Network
     {
         private void OnRecvLogin(IChannel channel, Message message)
         {
+            Console.WriteLine("on rece login");
             CLogin request = message as CLogin;
             string scene = "Level1";
-            Player player = new Player(channel) { scene = scene };
-
+            
             // read from database
             ConnectDB connect = new ConnectDB();
-            int result = connect.LogIn(request.user, request.password, ref player);
-            while (result == 0)
+            int playerID = 0;
+            while (playerID == 0)
             {
+                playerID = connect.LogIn(request.user, request.password);
+                if (playerID > 0)
+                    break;
                 ClientTipInfo(channel, "Wrong UserName or Passwd!");
-                result = connect.LogIn(request.user, request.password, ref player);
             }
-
 
             SPlayerEnter response = new SPlayerEnter()
             {
@@ -30,11 +32,13 @@ namespace Backend.Network
             };
             channel.Send(response);
 
+            Player player = new Player(channel) { scene = scene };
             DEntity dentity = World.Instance.EntityData["Ellen"];
             player.FromDEntity(dentity);
             player.forClone = false;
-            //ClientTipInfo(channel, "TODO: get player's attribute from database");
-            // player will be added to scene when receive client's CEnterSceneDone message
+            connect.GetPlayerAttri(playerID, player);
+
+            // DOTO: Add xyz from db
         }
     }
 }

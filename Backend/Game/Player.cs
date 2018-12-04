@@ -83,7 +83,7 @@ namespace Backend.Game
 
         virtual public void OnEnterScene(Scene scene)
         {
-
+            Console.WriteLine("Enter scene!");
         }
 
         virtual public void OnLeaveScene(Scene scene)

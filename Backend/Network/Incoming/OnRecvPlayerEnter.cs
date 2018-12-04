@@ -1,5 +1,6 @@
 ﻿using Common;
 using Backend.Game;
+using System;
 
 namespace Backend.Network
 {
@@ -13,6 +14,21 @@ namespace Backend.Network
             // add the player to the scene
             player.Spawn();
             scene.AddEntity(player);
+
+            SPlayerAttribute attrMessage = new SPlayerAttribute()
+            {
+                currentHP = player.currentHP,
+                level = player.level,
+                intelligence = player.intelligence,
+                speed = player.speed,
+                attack = player.attack,
+                defense = player.defense
+            };
+            channel.Send(attrMessage);
+
+
+            //for debug
+            //Console.WriteLine("recv player enter: player speed:{0}", player.speed);
         }
     }
 }

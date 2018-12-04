@@ -97,9 +97,12 @@ public class GameStart : MonoBehaviour
         }
 
         bool save = true;
-        CLogin login = new CLogin();
-        login.user = username;
-        login.password = password;
+        CLogin login = new CLogin()
+        {
+            user = username,
+            password = password
+        };
+
         if (save)
         {
             PlayerPrefs.SetString(USERNAME, username);

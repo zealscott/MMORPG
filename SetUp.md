@@ -23,6 +23,20 @@
 
 ## DataBase
 
+### 安装 `Npgsql` 
+
+- 官方地址 https://www.nuget.org/packages/Npgsql/
+
+- VS -> Tool -> NuGet Package Manager -> Package Manager Console
+
+  - 输入 `Install-Package Npgsql -Version 4.0.3`
+  - 安装完成会在 `Dependencies` 中出现
+
+  ![Npgsql](https://i.loli.net/2018/12/01/5c01fc159c9e3.png)
+
+1. 在需要使用数据库的 C# 文件中使用 `using Npgsql;` 头文件即可。
+2. 已在 `PostgreConnect` 中实现 `ConnectPostgresql` 访问数据库时直接调用即可。
+
 使用postgreSQL作为数据库，且数据库在`219.228.148.128`的机器上
 
 ### 允许局域网访问

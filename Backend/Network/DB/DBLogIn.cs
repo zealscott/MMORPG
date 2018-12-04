@@ -7,36 +7,22 @@ namespace Backend.Network
 {
     public partial class ConnectDB
     {
-        public int LogIn(String name, String passwd,ref Player play)
+        public int LogIn(String name, String passwd)
         {
             NpgsqlConnection conn = new NpgsqlConnection(connStr);
-            DbDataReader reader = null;
-            try
+            using (conn)
             {
-                conn.Open();
                 NpgsqlCommand objCommand = new NpgsqlCommand(logInSQL, conn);
                 objCommand.Parameters.Add("@name", NpgsqlTypes.NpgsqlDbType.Char).Value = name;
                 objCommand.Parameters.Add("@passwd", NpgsqlTypes.NpgsqlDbType.Char).Value = passwd;
+                conn.Open();
 
-                reader = objCommand.ExecuteReader();
-
-                if (!reader.HasRows)
-                    return 0;
-
+                DbDataReader reader = objCommand.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                    return reader.GetInt32(0);
                 else
-                {
-                    // TODO: get attribute from database
-                }
-                return 1;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return 0;
-            }
-            finally
-            {
-                conn.Close();
+                    return 0;
             }
         }
     }
