@@ -9,7 +9,7 @@ namespace Backend.Network
         public int registerUser(String name,String passwd)
         {
             NpgsqlConnection conn = new NpgsqlConnection(connStr);
-            Int32 rowsAffected = 0;
+            int rowsAffected = 0;
             try
             {
                 conn.Open();
