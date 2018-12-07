@@ -13,6 +13,18 @@
 
 # 后端部分
 
+## Unity
+
+- 如何看哪个代码绑定了哪个GameObject？
+
+  - 在代码的start中，添加输出：
+
+  - ```shell
+    Debug.Log(this.name);
+    ```
+
+  - 再次运行即可看见命令行输出
+
 ## 程序运行
 
 `Backend\Program.cs` 为程序主入口

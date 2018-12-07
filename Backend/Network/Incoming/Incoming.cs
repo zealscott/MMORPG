@@ -1,10 +1,16 @@
 ﻿using Common;
+using System.Collections.Generic;
+using Backend.Game;
 
 namespace Backend.Network
 {
     public partial class Incoming
     {
         IRegister register;
+
+        //contain on line players info
+        public Dictionary<int, Player> OnlinePlayers = new Dictionary<int, Player>();
+
         public Incoming(IRegister register)
         {
             this.register = register;

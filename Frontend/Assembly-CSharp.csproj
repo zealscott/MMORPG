@@ -155,6 +155,7 @@
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SEntityDestroy.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SEquipWeapon.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SExit.cs" />
+     <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SFindFriends.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SFindPath.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SHit.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SJump.cs" />
@@ -271,8 +272,8 @@
      <Compile Include="Assets\3DGamekit\Scripts\Game\Localization\TranslatedPhrases.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\Localization\TranslatedText.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\Localization\Translator.cs" />
-     <Compile Include="Assets\3DGamekit\Scripts\Game\Player\Player.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\Player\PlayerController.cs" />
+     <Compile Include="Assets\3DGamekit\Scripts\Game\Player\PlayerInfo.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\Player\PlayerMyController.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\Player\RespawnPlayer.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\Player\StateMachineBehaviour\EllenRespawnEffect.cs" />
@@ -315,6 +316,7 @@
      <Compile Include="Assets\3DGamekit\Scripts\Game\UI\InventoryUI.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\UI\KeyUI.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\UI\MenuActivityController.cs" />
+     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\OnClick.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\UI\RoleUI.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\UI\SetCursorMode.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\UI\ShelfGridUI.cs" />
@@ -346,6 +348,7 @@
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvEntityDestory.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvEquipWeapon.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvExit.cs" />
+     <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvFindFriends.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvFindPath.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvHit.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvJump.cs" />

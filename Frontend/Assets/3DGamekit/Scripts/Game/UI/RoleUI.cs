@@ -24,8 +24,9 @@ public class RoleUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        string hp = string.Format("{0}/{1}", Player.currentHP, 5);
+        string hp = string.Format("{0}/{1}", PlayerInfo.currentHP, 5);
         HPValue.SetText(hp, true);
+        
     }
 
     private void OnEnable()
@@ -40,11 +41,11 @@ public class RoleUI : MonoBehaviour
         HPValue.SetText(hp, true);
 
         // debug
-        IntelligenceValue.SetText(Player.intelligence.ToString(), true);
-        SpeedValue.SetText(Player.speed.ToString(), true);
-        LevelValue.SetText(Player.level.ToString(), true);
-        AttackValue.SetText(Player.attack.ToString(), true);
-        DefenseValue.SetText(Player.defense.ToString(), true);
+        IntelligenceValue.SetText(PlayerInfo.intelligence.ToString(), true);
+        SpeedValue.SetText(PlayerInfo.speed.ToString(), true);
+        LevelValue.SetText(PlayerInfo.level.ToString(), true);
+        AttackValue.SetText(PlayerInfo.attack.ToString(), true);
+        DefenseValue.SetText(PlayerInfo.defense.ToString(), true);
     }
 
     private void OnDisable()

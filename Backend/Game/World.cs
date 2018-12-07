@@ -19,6 +19,9 @@ namespace Backend.Game
 
         public Dictionary<string, DEntity> EntityData { get { return data; } }
 
+        // add method to get all entities on line
+        public Dictionary<int,Entity> Entities { get { return entities; } }
+
         private Queue<KeyValuePair<DateTime, OnTimer>> m_timers = new Queue<KeyValuePair<DateTime, OnTimer>>();
         public void Tick()
         {

@@ -20,6 +20,7 @@ class Program
         StreamReader reader = new StreamReader(confPath);
         BackendConf conf = (BackendConf)serializer.Deserialize(reader);
         GameServer gs = new GameServer(conf);
+         
         gs.StartUp();
 
         return 0;

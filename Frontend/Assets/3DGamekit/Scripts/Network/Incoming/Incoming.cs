@@ -33,11 +33,12 @@ namespace Gamekit3D.Network
             register.Register(Command.S_TIP_INFO, OnRecvTipInfo);
             register.Register(Command.S_PLAYER_DIE, OnRecvPlayerDie);
             register.Register(Command.S_PLAYER_RESPAWN, OnRecvPlayerReSpawn);
-            // add
-            register.Register(Command.S_PLAYER_ATTRIBUTE, OnRecvPlayerAttribute);
 
             // DEBUG ...
             register.Register(Command.S_FIND_PATH, OnRecvFindPath);
+            // ADD
+            register.Register(Command.S_PLAYER_ATTRIBUTE, OnRecvPlayerAttribute);
+            register.Register(Command.S_FIND_FRIENDS, OnRecvFindFriends);
         }
 
         public void InitNetworkEntity()

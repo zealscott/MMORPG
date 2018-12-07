@@ -26,9 +26,10 @@ namespace Common
         S_SPRITE_DIE,
         S_PLAYER_DIE,
         S_TIP_INFO,
+        // ADD
         S_PLAYER_ATTRIBUTE,
+        S_FIND_FRIENDS,
         SEND,
-
 
         CBEGIN,
         C_LOGIN,
@@ -41,6 +42,7 @@ namespace Common
         C_POSITION_REVISE,
         C_ENEMY_CLOSING,
         C_DAMAGE,
+        // ADD
         CEND,
 
         DEBUGGING, // THE FOLLOWING MESSEGES ARE FOR DEBUGGING
