@@ -20,7 +20,7 @@ namespace Backend.Network
                 
                 reader.Read();
                 // read attribution of the player
-                player.user = reader.GetString(reader.GetOrdinal("name"));
+                player.user = reader.GetString(reader.GetOrdinal("name")).Trim();
                 player.coin = reader.GetInt32(reader.GetOrdinal("coin"));
                 player.speed = reader.GetInt32(reader.GetOrdinal("speedvalue"));
                 player.level = reader.GetInt32(reader.GetOrdinal("levelValue"));

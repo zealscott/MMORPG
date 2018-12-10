@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Gamekit3D;
+using Common;
+using Gamekit3D.Network;
 
 public class ChatUI : MonoBehaviour
 {
@@ -25,7 +27,7 @@ public class ChatUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Test();
+        //Test();
     }
 
     private void OnEnable()
@@ -41,7 +43,14 @@ public class ChatUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(PlayerInfo.chatMessage.ContainsKey(PlayerInfo.chatName))
+        {
+            foreach(string messages in PlayerInfo.chatMessage[PlayerInfo.chatName])
+            {
+                ReceiveFriendMessage(messages);
+            }
+            PlayerInfo.chatMessage.Remove(PlayerInfo.chatName);
+        }
     }
 
     public void ReceiveFriendMessage(string text)
@@ -79,6 +88,14 @@ public class ChatUI : MonoBehaviour
 
 
         SendMyMessage(input.text);
+
+        MessageBox.Show("send message");
+        CChatMessage chatMessage = new CChatMessage()
+        {
+            toName = PlayerInfo.chatName,
+            chatContext = input.text
+        };
+        MyNetwork.Send(chatMessage);
 
         input.text = "";
     }

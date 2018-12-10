@@ -7,7 +7,8 @@ namespace Common
     {
         public SPlayerAttribute() : base(Command.S_PLAYER_ATTRIBUTE) { }
 
-        //public int playerId;
+        public int playerId;
+        public string name;
         public int currentHP;
         public int intelligence;
         public int speed;

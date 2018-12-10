@@ -34,6 +34,9 @@ namespace Backend.Network
 
             // start the server, block till program exit
             server.Start(ip, port);
+
+            // sync chat history to db
+            incomming.SyncChatHistory();
         }
 
         public void Register(Command command, MessageDelegate @delegate)

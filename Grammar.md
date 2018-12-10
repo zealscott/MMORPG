@@ -24,3 +24,6 @@ double s = TimePeriod.Seconds
 
 [参考这里](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/get)
 
+# String
+
+1. [String与StringBuilder](https://www.cnblogs.com/cang12138/p/7323709.html)

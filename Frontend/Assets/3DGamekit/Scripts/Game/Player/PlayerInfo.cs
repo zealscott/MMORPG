@@ -9,7 +9,10 @@ namespace Gamekit3D
 {
     public class PlayerInfo
     {
-        //static public int playerId = 0;
+        static public int playerId = 0;
+        static public string name = "";
+        static public string chatName = "";
+        static public Dictionary<string, List<string> > chatMessage = new Dictionary<string, List<string> >();   
 
         static public int currentHP = 5;
         static public int intelligence = 100;

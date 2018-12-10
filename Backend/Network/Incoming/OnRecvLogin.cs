@@ -2,6 +2,7 @@
 using Backend.Game;
 using System.Data.Common;
 using System;
+using System.Collections.Generic;
 
 namespace Backend.Network
 {
@@ -16,10 +17,22 @@ namespace Backend.Network
             // read from database
             ConnectDB connect = new ConnectDB();
             int playerID = connect.LogIn(request.user, request.password);
-            if (playerID == 0)
+            if (playerID == 0 )
             {
                 ClientTipInfo(channel, "Wrong UserName or Passwd!");
                 return;
+            }
+            if (OnlinePlayers.ContainsKey(request.user))
+            {
+                ClientTipInfo(channel, "user has logged in!");
+                return;
+            }
+
+            Console.WriteLine("request {0}: {1}", request.user, OnlinePlayers.ContainsKey(request.user));
+
+            foreach (KeyValuePair<string, Player> tmp in OnlinePlayers)
+            {
+                Console.WriteLine("----login: contain user:{0}", tmp.Key);
             }
 
             SPlayerEnter response = new SPlayerEnter()

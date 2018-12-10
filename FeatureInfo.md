@@ -15,6 +15,9 @@
 
 主要实现了单人聊天、群聊功能，同时保证历史记录的同步与恢复，好友在线消息提醒。
 
+1. 实现后端向前端发送在线好友，将在线好友信息保存在`OnlinePlayers`字典中
+   - 在前端新建一个消息`SFINDFRINDS`，后端在`OnRecvPlayerEnter`时发送玩家属性，并发送在线玩家。
+
 ### Reference
 
 1. [Unity点击鼠标绑定事件](https://www.cnblogs.com/isayes/p/6370168.html)

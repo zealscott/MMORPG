@@ -19,6 +19,8 @@ namespace Backend.Network
             // send player attributes 
             SPlayerAttribute attrMessage = new SPlayerAttribute()
             {
+                playerId = player.entityId,
+                name = player.user,
                 currentHP = player.currentHP,
                 level = player.level,
                 intelligence = player.intelligence,
@@ -29,17 +31,19 @@ namespace Backend.Network
             channel.Send(attrMessage);
 
             // add online player
-            OnlinePlayers.Add(player.entityId, player);
+            OnlinePlayers.Add(player.user, player);
             // send oneline player to frontend
             Dictionary<int, string> SendDic = new Dictionary<int, string>();
 
-            foreach (KeyValuePair<int, Player> tmp in OnlinePlayers)
+            foreach (KeyValuePair<string, Player> tmp in OnlinePlayers)
             {
-                SendDic.Add(tmp.Key, tmp.Value.user);
-                Console.WriteLine("Add user:{0}", tmp.Value.user);
+                SendDic.Add(tmp.Value.entityId, tmp.Key);
+                Console.WriteLine("contains user:{0}", tmp.Key);
             }
             SFindFriends response = new SFindFriends() { friends = SendDic };
             player.Broadcast(response);
+
+            Console.WriteLine("send find friends");
 
             //for debug
             //Console.WriteLine("recv player enter: player speed:{0}", player.speed);

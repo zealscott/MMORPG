@@ -9,6 +9,7 @@ using Common;
 public class FriendUI : MonoBehaviour
 {
     public GameObject FriendInfo;
+    public Button button;
 
     public List<GameObject> closeFriends = new List<GameObject>();
 
@@ -20,10 +21,7 @@ public class FriendUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //CFindFriends message = new CFindFriends();
-        //Client.Instance.Send(message);
 
-        //Test();
     }
 
     private void OnEnable()
@@ -47,9 +45,6 @@ public class FriendUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        MessageBox.Show("online friends count: " + PlayerInfo.friends.Count);
-
         foreach (KeyValuePair<int, string> friend in PlayerInfo.friends)
         {
             bool addFriend = true;
@@ -63,12 +58,18 @@ public class FriendUI : MonoBehaviour
 
             if(addFriend)
             {
+                MessageBox.Show("online friends count: " + PlayerInfo.friends.Count);
+
                 closeFriends.Add(GameObject.Instantiate(FriendInfo));
                 closeFriends[closeFriends.Count - 1].name = friend.Value;
                 closeFriends[closeFriends.Count - 1].transform.SetParent(transform, false);
                 closeFriends[closeFriends.Count - 1].SetActive(true);
                 var Textvalue = closeFriends[closeFriends.Count - 1].GetComponentInChildren<Text>();
                 Textvalue.text = friend.Value;
+
+                // bind a click event
+                button = closeFriends[closeFriends.Count - 1].GetComponent<Button>();
+                button.onClick.AddListener(Click);
             }
             
         }
@@ -88,6 +89,18 @@ public class FriendUI : MonoBehaviour
             closeFriends[closeFriends.Count - 1].SetActive(true);
             var Textvalue = closeFriends[closeFriends.Count - 1].GetComponentInChildren<Text>();
             Textvalue.text = friend.Value;
+
+            // bind a click event
+            button = closeFriends[closeFriends.Count - 1].GetComponent<Button>();
+            button.onClick.AddListener(Click);
         }
+    }
+
+    public void Click()
+    {
+        Debug.Log("Chat with " + this.GetComponentInChildren<Text>().text);
+        PlayerInfo.chatName = this.GetComponentInChildren<Text>().text;
+
+        MessageBox.Show("currently chat with " + PlayerInfo.chatName);
     }
 }

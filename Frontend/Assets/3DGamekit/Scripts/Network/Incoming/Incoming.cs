@@ -39,6 +39,8 @@ namespace Gamekit3D.Network
             // ADD
             register.Register(Command.S_PLAYER_ATTRIBUTE, OnRecvPlayerAttribute);
             register.Register(Command.S_FIND_FRIENDS, OnRecvFindFriends);
+            register.Register(Command.S_CHAT_MESSAGE, OnRecvChatMessage);
+
         }
 
         public void InitNetworkEntity()

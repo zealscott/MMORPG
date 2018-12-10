@@ -49,7 +49,8 @@
 
 1. `OnRecLogin.cs`
    - 首先，系统会去`Frontend\Assets\BEAssets\Level1.asset`文件中找到对应的初始坐标，然后在`World.Instance.EntityData["Ellen"]`中初始化角色信息，之后再在数据库中读入当前角色信息进行更新。
-2. ​
+2. `OnRecEnter.cs`
+   - ​
 
 
 ### 完善RoadMap

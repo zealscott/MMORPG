@@ -9,7 +9,9 @@ namespace Backend.Network
         IRegister register;
 
         //contain on line players info
-        public Dictionary<int, Player> OnlinePlayers = new Dictionary<int, Player>();
+        public Dictionary<string, Player> OnlinePlayers = new Dictionary<string, Player>();
+        // ChatHistory buffer
+        public List<string> ChatHistory = new List<string>();
 
         public Incoming(IRegister register)
         {
@@ -29,6 +31,7 @@ namespace Backend.Network
             register.Register(Command.C_POSITION_REVISE, OnRecvPositionRevise);
             register.Register(Command.C_ENEMY_CLOSING, OnRecvEnemyClosing);
             register.Register(Command.C_DAMAGE, OnRecvDamage);
+            register.Register(Command.C_CHAT_MESSAGE, OnRecvChatMessage);
 
             // DEBUG ..
             register.Register(Command.C_FIND_PATH, OnRecvFindPath);

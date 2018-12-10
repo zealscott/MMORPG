@@ -1,6 +1,5 @@
 ﻿using System;
-using Npgsql;
-using Common;
+
 
 namespace Backend.Network
 {
@@ -10,6 +9,5 @@ namespace Backend.Network
         String registerSQL = "INSERT INTO player (name,passwd) VALUES (@name,@passwd)";
         String logInSQL = "SELECT playerid FROM player WHERE name = @name AND passwd = @passwd";
         String GetPlayerAttriSQL = "SELECT * FROM player WHERE playerid = @playerid";
-
     }
 }

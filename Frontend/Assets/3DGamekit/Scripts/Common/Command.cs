@@ -29,6 +29,7 @@ namespace Common
         // ADD
         S_PLAYER_ATTRIBUTE,
         S_FIND_FRIENDS,
+        S_CHAT_MESSAGE,
         SEND,
 
         CBEGIN,
@@ -43,6 +44,7 @@ namespace Common
         C_ENEMY_CLOSING,
         C_DAMAGE,
         // ADD
+        C_CHAT_MESSAGE,
         CEND,
 
         DEBUGGING, // THE FOLLOWING MESSEGES ARE FOR DEBUGGING

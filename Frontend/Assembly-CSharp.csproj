@@ -152,6 +152,7 @@
      <Compile Include="Assets\3DGamekit\Packages\SceneManagement\Runtime\ScreenFader.cs" />
      <Compile Include="Assets\3DGamekit\Packages\SceneManagement\Runtime\TransitionPoint.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SAttack.cs" />
+     <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SChatMessage.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SEntityDestroy.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SEquipWeapon.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SExit.cs" />
@@ -171,6 +172,7 @@
      <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\STipInfo.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\Command.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\Delegate.cs" />
+     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CChatMessage.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CDamage.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CEnemyClosing.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CFindPath.cs" />
@@ -316,7 +318,6 @@
      <Compile Include="Assets\3DGamekit\Scripts\Game\UI\InventoryUI.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\UI\KeyUI.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\UI\MenuActivityController.cs" />
-     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\OnClick.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\UI\RoleUI.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\UI\SetCursorMode.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Game\UI\ShelfGridUI.cs" />
@@ -344,6 +345,7 @@
      <Compile Include="Assets\3DGamekit\Scripts\Network\ICreatureBehavior.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\Incoming.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvAttack.cs" />
+     <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvChatMessage.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvDie.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvEntityDestory.cs" />
      <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvEquipWeapon.cs" />

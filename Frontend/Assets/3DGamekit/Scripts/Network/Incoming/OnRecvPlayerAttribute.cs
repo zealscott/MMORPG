@@ -8,11 +8,9 @@ namespace Gamekit3D.Network
         private void OnRecvPlayerAttribute(IChannel channel, Message message)
         {
             SPlayerAttribute msg = message as SPlayerAttribute;
-            //NetworkEntity player = networkEntities[msg.playerID];
-            //Player m_player = player.gameObject.GetComponent<Player>();
-            //if (m_player == null)
-            //    return;
 
+            PlayerInfo.playerId = msg.playerId;
+            PlayerInfo.name = msg.name;
             PlayerInfo.currentHP = msg.currentHP;
             PlayerInfo.level = msg.level;
             PlayerInfo.speed = msg.speed;
