@@ -28,13 +28,6 @@ namespace Backend.Network
                 return;
             }
 
-            Console.WriteLine("request {0}: {1}", request.user, OnlinePlayers.ContainsKey(request.user));
-
-            foreach (KeyValuePair<string, Player> tmp in OnlinePlayers)
-            {
-                Console.WriteLine("----login: contain user:{0}", tmp.Key);
-            }
-
             SPlayerEnter response = new SPlayerEnter()
             {
                 user = request.user,

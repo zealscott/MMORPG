@@ -14,7 +14,6 @@ namespace Backend.Network
             Player player = (Player)channel.GetContent();
             string toWho = request.toName;
             string content = request.chatContext;
-            Player toPlayer = OnlinePlayers[toWho];
 
             SChatMessage chatMessage = new SChatMessage()
             {
@@ -25,7 +24,18 @@ namespace Backend.Network
             // for debug
             Console.WriteLine("recieve chat msg from :{0}", player.user);
 
-            toPlayer.connection.Send(chatMessage);
+            if (toWho == "WorldChat")
+            {
+                chatMessage.fromName = toWho;
+                player.Broadcast(chatMessage, true);
+            }
+                
+                
+            else
+            {
+                Player toPlayer = OnlinePlayers[toWho];
+                toPlayer.connection.Send(chatMessage);
+            }
 
             ChatHistory.Add(string.Format("('{0}','{1}','{2}','{3}')", player.user, toWho, content, System.DateTime.Now));
         }

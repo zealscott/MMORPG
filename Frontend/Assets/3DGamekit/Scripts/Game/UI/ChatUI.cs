@@ -37,6 +37,14 @@ public class ChatUI : MonoBehaviour
 
     private void OnDisable()
     {
+        // delete all the messages 
+        for(int i = 0; i < this.transform.childCount; i++)
+        {
+            GameObject go = this.transform.GetChild(i).gameObject;
+            //Debug.Log(go);
+            Destroy(go);
+        }
+
         PlayerMyController.Instance.EnabledWindowCount--;
     }
 

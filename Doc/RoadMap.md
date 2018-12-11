@@ -1,5 +1,5 @@
 # Architecture
-<img src="Doc/pic/architecture.png" height=114></img>
+<img src="../Doc/pic/architecture.png" height=114></img>
 
 # __Roadmap__
 
@@ -30,9 +30,9 @@
 
 ## __聊天__
   - [x] UI
-  - [ ] 聊天逻辑
-  - [ ] 聊天历史记录保存
-- [ ] 聊天记录同步
+  - [x] 聊天逻辑
+  - [x] 聊天历史记录保存
+- [x] 聊天记录同步
 
 ##### __主角__
   - [x] 走路

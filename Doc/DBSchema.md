@@ -8,6 +8,12 @@
 | -------- | -------- | -------- | ------- | ---------- | ---------- | ----------------- | ----------- | ------------ | ------- | ---------- | ------------------ | ------- |
 | serial   | char(20) | char(30) | integer | smallint   | integer    | integer           | integer     | integer      | integer | TIMESTAMP  | TIMESTAMP          | boolean |
 
+- **聊天记录表**
+
+| FromWho           | ToWho             | Content | chatTime  |
+| ----------------- | ----------------- | ------- | --------- |
+| char(20) not null | char(20) not null | text    | TIMESTAMP |
+
 - **宝物表**
 
 | TreasureID | Name     | AttributeValue | Type   |
