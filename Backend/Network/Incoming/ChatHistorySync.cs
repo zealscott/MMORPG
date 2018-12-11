@@ -7,12 +7,12 @@ namespace Backend.Network
 {
     public partial class Incoming
     {
-        public void SyncChatHistory()
+        public void SyncChatHistory(object Internal)
         {
             while (true)
             {
-                //Thread.Sleep(1);
-                Console.WriteLine("sleep 1 ms");
+                Thread.Sleep((int)Internal);
+                //Console.WriteLine("sleep 1 s");
                 if (ChatHistory.Count > 0)
                 {
                     Console.WriteLine("clean chat log");

@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Sockets;
 using Backend.Game;
 using Common;
+using System.Threading;
 
 namespace Backend.Network
 {
@@ -32,11 +33,13 @@ namespace Backend.Network
             // load assets before create game world and receive client connections
             LoadAssets();
 
+            // sync chat history to db / threadpool
+            ThreadPool.QueueUserWorkItem(incomming.SyncChatHistory,10000);
+
             // start the server, block till program exit
             server.Start(ip, port);
 
-            // sync chat history to db
-            incomming.SyncChatHistory();
+            
         }
 
         public void Register(Command command, MessageDelegate @delegate)

@@ -28,10 +28,6 @@ namespace Backend.Network
             toPlayer.connection.Send(chatMessage);
 
             ChatHistory.Add(string.Format("('{0}','{1}','{2}','{3}')", player.user, toWho, content, System.DateTime.Now));
-
-            ConnectDB connect = new ConnectDB();
-            connect.DBSyncChat(ChatHistory);
-            ChatHistory.Clear();
         }
     }
 }

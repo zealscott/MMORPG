@@ -17,8 +17,11 @@
 
 1. 实现后端向前端发送在线好友，将在线好友信息保存在`OnlinePlayers`字典中
    - 在前端新建一个消息`SFINDFRINDS`，后端在`OnRecvPlayerEnter`时发送玩家属性，并发送在线玩家。
+2. 使用线程池每隔一段时间就将消息sync到数据库中，需要尽可能实现前台进程
 
 ### Reference
 
 1. [Unity点击鼠标绑定事件](https://www.cnblogs.com/isayes/p/6370168.html)
+2. [C#多线程实现](https://www.cnblogs.com/luxiaoxun/p/3280146.html)
+3. [前台进程与后台进程区别](https://www.c-sharpcorner.com/UploadFile/ff0d0f/working-of-thread-and-foreground-background-thread-in-C-Sharp730/)
 
