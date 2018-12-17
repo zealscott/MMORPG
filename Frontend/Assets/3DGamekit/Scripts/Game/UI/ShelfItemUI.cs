@@ -54,8 +54,6 @@ public class ShelfItemUI : MonoBehaviour
         else
             isGold = false;
         // debug
-
-    
     }
 
 
@@ -63,7 +61,5 @@ public class ShelfItemUI : MonoBehaviour
     {
         if (handler != null)
             handler.AddToDetail(itemName, isGold);
-            
-        //Debug.Log("add to detail()");
     }
 }

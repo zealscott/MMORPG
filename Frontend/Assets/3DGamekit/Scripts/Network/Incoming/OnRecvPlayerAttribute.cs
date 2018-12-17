@@ -17,6 +17,8 @@ namespace Gamekit3D.Network
             PlayerInfo.defense = msg.defense;
             PlayerInfo.attack = msg.attack;
             PlayerInfo.intelligence = msg.intelligence;
+            PlayerInfo.GoldNum = msg.GoldNum;
+            PlayerInfo.SilverNum = msg.SilverNum;
 
             //MessageBox.Show("Updated player attributes.");
             MessageBox.Show(string.Format("receive speed {0}", PlayerInfo.speed));

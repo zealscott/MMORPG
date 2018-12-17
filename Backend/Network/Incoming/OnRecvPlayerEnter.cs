@@ -26,7 +26,9 @@ namespace Backend.Network
                 intelligence = player.intelligence,
                 speed = player.speed,
                 attack = player.attack,
-                defense = player.defense
+                defense = player.defense,
+                GoldNum = player.GoldNum,
+                SilverNum = player.SilverNum
             };
             channel.Send(attrMessage);
 

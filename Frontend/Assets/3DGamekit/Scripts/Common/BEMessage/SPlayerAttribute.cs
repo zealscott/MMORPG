@@ -15,5 +15,7 @@ namespace Common
         public int level;
         public int attack;
         public int defense;
+        public int GoldNum;
+        public int SilverNum;
     }
 }

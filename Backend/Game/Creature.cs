@@ -11,10 +11,11 @@ namespace Backend.Game
         public int maxHP;
         public int level;
         public int speed;
-        public int coin;
         public int attack;
         public int defense;
         public int intelligence;
+        public int GoldNum;
+        public int SilverNum;
         public float invulnerableTime;
         public float hitAngle;
         public bool dead = false;
@@ -82,7 +83,11 @@ namespace Backend.Game
             entity.maxHP = maxHP;
             entity.level = level;
             entity.speed = speed;
-
+            entity.attack = attack;
+            entity.defense = defense;
+            entity.intelligence = intelligence;
+            entity.SilverNum = SilverNum;
+            entity.GoldNum = GoldNum;
             return entity;
         }
 
@@ -95,10 +100,11 @@ namespace Backend.Game
             aggressive = entity.aggressive;
             invulnerableTime = entity.invTime;
             hitAngle = entity.hitAngle;
-            coin = entity.coin;
             attack = entity.attack;
             defense = entity.defense;
             intelligence = entity.intelligence;
+            GoldNum = entity.GoldNum;
+            SilverNum = entity.SilverNum;
             base.FromDEntity(entity);
         }
     }

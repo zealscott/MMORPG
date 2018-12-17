@@ -21,6 +21,9 @@ namespace Gamekit3D
         static public int attack = 20;
         static public int defense = 20;
 
+        static public int GoldNum = 10;
+        static public int SilverNum = 10;
+
         static public Dictionary<int, string> friends = new Dictionary<int, string>();
     }
 }
