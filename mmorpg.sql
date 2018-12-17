@@ -10,7 +10,8 @@ CREATE TABLE Player
 	PlayerID serial PRIMARY KEY,	
 	Name char(20) not null UNIQUE,
 	Passwd char(30) not null, 
-	Coin integer not null default 20,
+	GoldNum integer not null default 20,						-- 金币
+	SilverNum integer not null default 20,						-- 银币
 	LevelValue smallint CHECK(LevelValue > 0) default 1,		-- 等级
 	SpeedValue integer default 10,								-- 速度
 	IntelligenceValue integer default 10,						-- 智力
