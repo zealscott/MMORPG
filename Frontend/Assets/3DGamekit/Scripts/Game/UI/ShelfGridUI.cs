@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Gamekit3D;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,10 @@ public class ShelfGridUI : MonoBehaviour
     {
         foreach (KeyValuePair<string, Sprite> kv in GetAllIcons.icons)
         {
+            if (!TreasureInfo.silverT.ContainsKey(kv.Key))
+            {
+                continue;
+            }
             string key = kv.Key;
             GameObject cloned = GameObject.Instantiate(ShelfItem);
             if (cloned == null)
@@ -29,7 +34,8 @@ public class ShelfGridUI : MonoBehaviour
             {
                 continue;
             }
-            handler.Init(key);
+            handler.Init(key, 1, TreasureInfo.silverT[key]);
+            Debug.Log("name: " + key + " defense: " + TreasureInfo.treasureAttri[key].defense);
         }
         ShelfItem.SetActive(false);
     }
@@ -38,5 +44,23 @@ public class ShelfGridUI : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private void OnEnable()
+    {
+        foreach (KeyValuePair<string, Treasure> tmp in TreasureInfo.treasureAttri)
+        {
+            Debug.Log("attribute: " + tmp.Key);
+        }
+
+        foreach (KeyValuePair<string, int> tmp in TreasureInfo.silverT)
+        {
+            Debug.Log("silver: " + tmp.Key);
+        }
+
+        foreach (KeyValuePair<string, TreasureOwnership> tmp in TreasureInfo.goldenT)
+        {
+            Debug.Log("golden: " + tmp.Key);
+        }
     }
 }

@@ -10,14 +10,14 @@ namespace Backend.Network
     {
         private void OnRecvLogin(IChannel channel, Message message)
         {
-            
+
             CLogin request = message as CLogin;
             string scene = "Level1";
 
             // read from database
             ConnectDB connect = new ConnectDB();
             int playerID = connect.LogIn(request.user, request.password);
-            if (playerID == 0 )
+            if (playerID == 0)
             {
                 ClientTipInfo(channel, "Wrong UserName or Passwd!");
                 return;
@@ -41,9 +41,11 @@ namespace Backend.Network
             player.FromDEntity(dentity);
             player.forClone = false;
             connect.GetPlayerAttri(playerID, player);
-            Console.WriteLine("user: {0} login",player.user);
+            Console.WriteLine("user: {0} login", player.user);
 
             // DOTO: Add xyz from db
+
+            
         }
     }
 }

@@ -30,6 +30,9 @@ namespace Common
         S_PLAYER_ATTRIBUTE,
         S_FIND_FRIENDS,
         S_CHAT_MESSAGE,
+        S_TREASURE_ATTRIBUTE,
+        S_SILVER_TREASURE,
+        S_GOLDEN_TREASURE,
         SEND,
 
         CBEGIN,

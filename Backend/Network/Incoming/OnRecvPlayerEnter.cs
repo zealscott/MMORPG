@@ -47,6 +47,50 @@ namespace Backend.Network
 
             //for debug
             //Console.WriteLine("recv player enter: player speed:{0}", player.speed);
+
+            // debug: send treasure to frontend
+            //Treasure test = new Treasure()
+            //{
+            //    treasureId = 1,
+            //    name = "Amulet_1",
+            //    attack = 10
+            //};
+            //STreasureAttribute testInfo = new STreasureAttribute() { };
+            //testInfo.treasureAttri = new Dictionary<string, DTreasure>();
+            //testInfo.treasureAttri.Add(test.name, test.ToDTreasure());
+            //TreasureOwnership test2 = new TreasureOwnership()
+            //{
+            //    price = 10
+            //};
+            //testInfo.goldenT = new Dictionary<string, DTreasureOwnership>();
+            //testInfo.goldenT.Add(test.name, test2.ToDTreasureOwnership());
+            //channel.Send(testInfo);
+
+            
+            ConnectDB connect = new ConnectDB();
+            STreasureAttribute testAttr = new STreasureAttribute() { };
+            testAttr.treasureAttri = new Dictionary<string, DTreasure>(connect.GetTreasureAttri());
+            foreach (KeyValuePair<string, DTreasure> tmp in testAttr.treasureAttri)
+            {
+                Console.WriteLine("from DB attribute: " + tmp.Key);
+            }
+            channel.Send(testAttr);
+
+            SSilverT testSilver = new SSilverT() { };
+            testSilver.silverT = new Dictionary<string, int>(connect.GetSilverT());
+            foreach (KeyValuePair<string, int> tmp in testSilver.silverT)
+            {
+                Console.WriteLine("from DB silver: " + tmp.Key);
+            }
+            channel.Send(testSilver);
+
+            SGoldenT testGolden = new SGoldenT() { };
+            testGolden.goldenT = new Dictionary<string, DTreasureOwnership>(connect.GetGoldenT());
+            foreach (KeyValuePair<string, DTreasureOwnership> tmp in testGolden.goldenT)
+            {
+                Console.WriteLine("from DB golden: " + tmp.Key);
+            }
+            channel.Send(testGolden);
         }
     }
 }

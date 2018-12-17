@@ -130,6 +130,29 @@ namespace Common
         public string asset_path;
         public List<string> scenes;
     }
+
+    [Serializable]
+    public class DTreasure
+    {
+        public int treasureId;
+        public string name;
+        public int mainType;
+        public int speed;
+        public int intelligence;
+        public int attack;
+        public int defense;
+    }
+
+    [Serializable]
+    public class DTreasureOwnership
+    {
+        public int treasureId;
+        public bool wear;
+        public int price;
+        public int number;
+        public int sellNum;
+        public int ownerId;
+    }
 }
 
 

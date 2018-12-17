@@ -4,8 +4,6 @@ CREATE DATABASE mmorpg;
 
 \c mmorpg;
 
-CREATE TYPE t_type AS ENUM ('speed', 'intelligence', 'attack', 'defence');
-
 -- 创建玩家表，PlayID根据玩家注册先后进行自动新建，唯一表明该玩家
 CREATE TABLE Player 
 (
@@ -31,9 +29,12 @@ CREATE INDEX Player_index ON Player (PlayerID);
 CREATE TABLE Treasures  
 (
 	TreasureID serial PRIMARY KEY,
-    Name char(20) not null UNIQUE,
-	AttributeValue integer,
-	Type t_type 						-- 分别是速度、智力、攻击、防御
+    Name char(20) not null UNIQUE,					-- 宝物名称
+	MainType integer,								-- 宝物类型：helmet:1\armour:2\leftWeapon:3\rightWeapon:4\shield:5\magicPortion:6
+	SpeedValue integer,								-- 速度
+	IntelligenceValue integer,						-- 智力
+	AttackValue integer,							-- 攻击
+	DefenseValue integer							-- 防御
 );
 
 CREATE INDEX Treasures_index ON Treasures (TreasureID);
@@ -45,10 +46,12 @@ CREATE TABLE TreasureCollection
 (
 	PlayerID integer,
 	TreasureID integer,
-    Name char(20),						-- 宝物名称
-    Type t_type,						-- 分别是速度、智力、攻击、防御
-    AttributeValue integer,
-	Wear boolean,   
+    Name char(20),												-- 宝物名称
+	Wear boolean default false,   								-- 是否装备
+	OwnNum integer default 1,									-- 该宝物拥有的数量
+	Sell integer default 0,										-- 出售的宝物价格，若为0则没有出售
+	SellNum integer CHECK(SellNum <= OwnNum) default 0,			-- 出售的宝物数量（小于等于拥有的数量）
+
 	PRIMARY KEY(PlayerID, TreasureID),
 	FOREIGN KEY(PlayerID) REFERENCES Player(PlayerID),
 	FOREIGN KEY(TreasureID) REFERENCES Treasures(TreasureID),
@@ -59,21 +62,16 @@ CREATE INDEX TreasureCollection_index ON TreasureCollection (PlayerID, TreasureI
 CLUSTER TreasureCollection USING TreasureCollection_index;
 
 
--- 交易市场
-CREATE TABLE Market 
+-- 商场中无限量供应的宝物
+CREATE TABLE Mall
 (
-	ItemID integer,
-	SellerID integer,
-	Name char(20),					-- 宝物名称
-    Type t_type,					-- 分别是速度、智力、攻击、防御
-    AttributeValue integer,
-	Price integer CHECK(Price > 0),   
-	PRIMARY KEY(ItemID, SellerID),
-	FOREIGN KEY(ItemID) REFERENCES Treasures(TreasureID),
-	FOREIGN KEY(SellerID) REFERENCES Player(PlayerID)
-);
+	TreasureID integer,
+	Name char(20),						-- 宝物名称
+	Price integer not null, 			-- 宝物价格
 
-CREATE INDEX Market_index ON Market (ItemID, SellerID);
+	FOREIGN KEY(TreasureID) REFERENCES Treasures(TreasureID),
+	FOREIGN KEY(Name) REFERENCES Treasures(Name)
+);
 
 
 -- 决斗记录

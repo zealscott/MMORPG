@@ -25,6 +25,16 @@
 
   - 再次运行即可看见命令行输出
 
+### 加载Sprite
+
+有时候我们需要动态加载不同的图片（金币、硬币），这时候需要使用：
+
+```
+Resources.Load<Sprite>(picname)
+```
+
+这里需要注意的是，图片需要保存在`Assets/Resources/`文件下，并在unity中设置为sprite，可以[参考这里](https://stackoverflow.com/questions/24977986/why-does-resources-load-sprite-return-null)。
+
 ## 程序运行
 
 `Backend\Program.cs` 为程序主入口
@@ -50,7 +60,6 @@
 1. `OnRecLogin.cs`
    - 首先，系统会去`Frontend\Assets\BEAssets\Level1.asset`文件中找到对应的初始坐标，然后在`World.Instance.EntityData["Ellen"]`中初始化角色信息，之后再在数据库中读入当前角色信息进行更新。
 2. `OnRecEnter.cs`
-   - ​
 
 
 ### 完善RoadMap

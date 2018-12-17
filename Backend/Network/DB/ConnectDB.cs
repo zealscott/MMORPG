@@ -9,5 +9,9 @@ namespace Backend.Network
         string registerSQL = "INSERT INTO player (name,passwd) VALUES (@name,@passwd)";
         string logInSQL = "SELECT playerid FROM player WHERE name = @name AND passwd = @passwd";
         string GetPlayerAttriSQL = "SELECT * FROM player WHERE playerid = @playerid";
+        string GetTreasureAttriSQL = "SELECT * FROM treasures";
+        string GetGoldenTreasureSQL = "SELECT * FROM treasurecollection WHERE sellnum > 0 ";
+        string GetSilverTreasureSQL = "SELECT * FROM mall";
+        string GetPlayerTreasureSQL = "SELECT * FROM treasurecollection WHERE playerid = @playerid";
     }
 }

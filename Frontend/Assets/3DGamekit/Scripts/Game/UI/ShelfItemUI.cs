@@ -5,18 +5,19 @@ using UnityEngine.UI;
 public class ShelfItemUI : MonoBehaviour
 {
     public string itemName;
-    public GameObject cartContent;
+    public GameObject ItemDetail;
 
     public Button button;
     public Text textName;
     public Text textCost;
-    CartGridUI handler;
+    public bool isGold;
+    ItemDetailUI handler;
 
     private void Awake()
     {
-        if (cartContent != null)
+        if (ItemDetail != null)
         {
-            handler = cartContent.GetComponent<CartGridUI>();
+            handler = ItemDetail.GetComponent<ItemDetailUI>();
         }
     }
     // Use this for initialization
@@ -31,7 +32,8 @@ public class ShelfItemUI : MonoBehaviour
 
     }
 
-    public void Init(string name)
+    // type: 0 means golden while 1 means silver
+    public void Init(string name, int type, int price)
     {
         itemName = name;
         Sprite sprite;
@@ -45,12 +47,23 @@ public class ShelfItemUI : MonoBehaviour
         }
         button.image.sprite = sprite;
         textName.text = name;
-        textCost.text = "$5";
+        textCost.text = price.ToString();
+
+        if (type == 0)
+            isGold = true;
+        else
+            isGold = false;
+        // debug
+
+    
     }
 
-    public void AddToCart()
+
+    public void AddToDetail()
     {
         if (handler != null)
-            handler.AddToCart(itemName);
+            handler.AddToDetail(itemName, isGold);
+            
+        //Debug.Log("add to detail()");
     }
 }
