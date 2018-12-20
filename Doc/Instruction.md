@@ -136,9 +136,9 @@
 1. [在Unity中将sprite分开为多个GameObject](http://www.unity.5helpyou.com/3625.html)
 2. 将普通Sprite制作为Sprite Asset（作为TextMash中图片的来源）：
    - 右键需要制作的Sprite->Create->TextMashPro->Sprite Asset
-   - ![54520998732](C:\Users\scott\AppData\Local\Temp\1545209987326.png)
+   - ![54520998732](../Doc/pic/TextMash1.png)
 3. 新建`TextMash --Text` 的GameObject，并添加Sprite Asset：
-   - ![54521010246](C:\Users\scott\AppData\Local\Temp\1545210102464.png)
+   - ![54521010246](../Doc/pic/TextMash2.png)
 4. 在文本中使用对应的ID即可使用：
-   - ![54521012889](C:\Users\scott\AppData\Local\Temp\1545210128896.png)
+   - ![54521012889](../Doc/pic/TextMash3.png)
 5. 在Script中使用该[GameObject](https://forum.unity.com/threads/from-unity-ui-to-textmeshpro.463619/)，需要添加NameSpace
