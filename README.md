@@ -64,13 +64,13 @@ Backend用到了[GeometRi](https://github.com/RiSearcher/GeometRi.CSharp)，一�
 dotnet add backend package GeometRi --version 1.3.5.3
 ```
 
-![54314289881](E:\MMORPG\Doc\pic\GeometRi.png)
+![54314289881](.\Doc\pic\GeometRi.png)
 
 ## 使用VS Build Backend
 
 打开Visual Studio，build backend：
 
-![buildBackend](E:\MMORPG\Doc\pic\buildBackend.png)
+![buildBackend](.\Doc\pic\buildBackend.png)
 
 ## 启动Backend
 
@@ -78,18 +78,18 @@ dotnet add backend package GeometRi --version 1.3.5.3
   （在MMORPG/Frontend/Assets/BEAssets下，这个文件夹存的是从客户端导出的一些信息, 例如： 每个场景的阻档点，精灵出生点坐标等）
 - 打开MMORPG.sln,发布bakcend项目
   - 首先将setting指向自己的配置文件：
-    - ![54314488662](E:\MMORPG\Doc\pic\settingBackend.png)
+    - ![54314488662](.\Doc\pic\settingBackend.png)
   - 然后Publish：
-    - ![publishBackend](E:\MMORPG\Doc\pic\publishBackend.png)
+    - ![publishBackend](.\Doc\pic\publishBackend.png)
 - 将backend设为启动项目：
-  - ![54314505524](E:\MMORPG\Doc\pic\StartPrj.png)
+  - ![54314505524](.\Doc\pic\StartPrj.png)
 - 在VS中启动Backend.exe，命令行参数为配置文件路径，如
 
 ```shell
  .\Backend.exe E:\\MMORPG\\Frontend\\Assets\\BEAssets\\backend.conf
 ```
 
-![54314548145](E:\MMORPG\Doc\pic\backendexe.png)
+![54314548145](.\Doc\pic\backendexe.png)
 
 ## 使用Unity3d Editor执行, 或build成APP执行
 
