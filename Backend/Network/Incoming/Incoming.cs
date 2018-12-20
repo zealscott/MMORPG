@@ -12,6 +12,10 @@ namespace Backend.Network
         public Dictionary<string, Player> OnlinePlayers = new Dictionary<string, Player>();
         // ChatHistory buffer
         public List<string> ChatHistory = new List<string>();
+        // treasureInfo
+        public Dictionary<string, DTreasure> treasureAttributes = new Dictionary<string, DTreasure>();
+        // mall
+        public Dictionary<string, DTreasureMall> backMall = new Dictionary<string, DTreasureMall>();
 
         public Incoming(IRegister register)
         {
@@ -35,7 +39,7 @@ namespace Backend.Network
 
             // DEBUG ..
             register.Register(Command.C_FIND_PATH, OnRecvFindPath);
-
+            register.Register(Command.C_BUY, OnRecvBuy);
         }
 
 

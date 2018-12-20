@@ -145,14 +145,18 @@ namespace Common
     }
 
     [Serializable]
-    public class DTreasureOwnership
+    public class DTreasurePackage
     {
-        public int treasureId;
         public bool wear;
-        public int price;
         public int number;
-        public int sellNum;
-        public int ownerId;
+    }
+
+    [Serializable]
+    public class DTreasureMall
+    {
+        public string ownerName;
+        public int price;
+        public bool isGold;
     }
 }
 

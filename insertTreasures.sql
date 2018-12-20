@@ -1,3 +1,4 @@
+-- \i E:/MMORPG/insertTreasures.sql
 -- 宝物类型：helmet:1\armour:2\accessory:3\weapon:4\shield:5\elixir:6
 -- treasures
 INSERT INTO 
@@ -116,116 +117,116 @@ VALUES('Sword_2', 4, 2, 2, 6, 7);
 
 -- Mall
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(1, 'Amulet_1', 9);
+mall(TreasureName, price)
+VALUES('Amulet_1', 9);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(2, 'Amulet_2', 10);
+mall(TreasureName, price)
+VALUES('Amulet_2', 10);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(7, 'Ax_2', 33);
+mall(TreasureName, price, OwnerName, IsGold)
+VALUES('Armor_1', 30, 'test', true);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(10, 'Elixir_1', 18);
+mall(TreasureName, price, OwnerName, IsGold)
+VALUES('Armor_2', 35, '123', true);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(11, 'Elixir_2', 26);
+mall(TreasureName, price, OwnerName, IsGold)
+VALUES('Armor_3', 27, 'test', true);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(12, 'Elixir_3', 20);
+mall(TreasureName, price)
+VALUES('Ax_2', 33);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(13, 'Elixir_4', 16);
+mall(TreasureName, price)
+VALUES('Elixir_1', 18);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(14, 'Elixir_5', 22);
+mall(TreasureName, price)
+VALUES('Elixir_2', 26);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(15, 'Elixir_6', 17);
+mall(TreasureName, price)
+VALUES('Elixir_3', 20);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(16, 'Flail', 17);
+mall(TreasureName, price)
+VALUES('Elixir_4', 16);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(17, 'Helmet_1', 17);
+mall(TreasureName, price)
+VALUES('Elixir_5', 22);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(18, 'Helmet_2', 17);
+mall(TreasureName, price)
+VALUES('Elixir_6', 17);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(19, 'Helmet_3', 17);
+mall(TreasureName, price)
+VALUES('Flail', 17);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(20, 'Helmet_4', 17);
+mall(TreasureName, price)
+VALUES('Helmet_1', 17);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(21, 'Ring_1', 17);
+mall(TreasureName, price)
+VALUES('Helmet_2', 6);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(22, 'Ring_2', 17);
+mall(TreasureName, price)
+VALUES('Helmet_3', 9);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(23, 'Shield', 17);
+mall(TreasureName, price)
+VALUES('Helmet_4', 23);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(24, 'Shurikens', 17);
+mall(TreasureName, price)
+VALUES('Ring_1', 10);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(25, 'Stone_1', 17);
+mall(TreasureName, price)
+VALUES('Ring_2', 35);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(26, 'Stone_2', 17);
+mall(TreasureName, price)
+VALUES('Shield', 27);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(27, 'Sword_1', 17);
+mall(TreasureName, price)
+VALUES('Shurikens', 15);
 
 INSERT INTO 
-mall(treasureid, name, price)
-VALUES(28, 'Sword_2', 17);
-
-
--- treasurecollection
-INSERT INTO 
-treasurecollection(playerid, treasureid, name, wear, ownnum, sell, sellnum)
-VALUES(1, 3, 'Armor_1', false, 1, 30, 1);
+mall(TreasureName, price)
+VALUES('Stone_1', 9);
 
 INSERT INTO 
-treasurecollection(playerid, treasureid, name, wear, ownnum, sell, sellnum)
-VALUES(1, 4, 'Armor_2', false, 1, 35, 1);
+mall(TreasureName, price)
+VALUES('Stone_2', 8);
 
 INSERT INTO 
-treasurecollection(playerid, treasureid, name, wear, ownnum, sell, sellnum)
-VALUES(3, 5, 'Armor_3', false, 1, 27, 1);
+mall(TreasureName, price)
+VALUES('Sword_1', 23);
 
 INSERT INTO 
-treasurecollection(playerid, treasureid, name, wear, ownnum, sell, sellnum)
-VALUES(1, 6, 'Ax_1', false, 1, 0, 0);
+mall(TreasureName, price)
+VALUES('Sword_2', 27);
+
+
+-- package
+INSERT INTO 
+package(playername, treasurename, wear, ownnum)
+VALUES('123', 'Ax_1', false, 1);
 
 INSERT INTO 
-treasurecollection(playerid, treasureid, name, wear, ownnum, sell, sellnum)
-VALUES(3, 8, 'Ax_3', false, 1, 0, 0);
+package(playername, treasurename, wear, ownnum)
+VALUES('test', 'Ax_3', false, 1);
 
 INSERT INTO 
-treasurecollection(playerid, treasureid, name, wear, ownnum, sell, sellnum)
-VALUES(3, 9, 'Bow', false, 1, 0, 0);
+package(playername, treasurename, wear, ownnum)
+VALUES('test', 'Bow', false, 1);
 

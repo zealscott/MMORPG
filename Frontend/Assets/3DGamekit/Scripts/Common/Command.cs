@@ -31,8 +31,10 @@ namespace Common
         S_FIND_FRIENDS,
         S_CHAT_MESSAGE,
         S_TREASURE_ATTRIBUTE,
-        S_SILVER_TREASURE,
-        S_GOLDEN_TREASURE,
+        S_MALL,
+        S_PACKAGE,
+        S_BUY_GOLD_RESULT,
+        S_SEND_TO_SELLER,
         SEND,
 
         CBEGIN,
@@ -48,6 +50,7 @@ namespace Common
         C_DAMAGE,
         // ADD
         C_CHAT_MESSAGE,
+        C_BUY,
         CEND,
 
         DEBUGGING, // THE FOLLOWING MESSEGES ARE FOR DEBUGGING

@@ -97,7 +97,7 @@ public class ChatUI : MonoBehaviour
 
         SendMyMessage(input.text);
 
-        MessageBox.Show("send message");
+        //MessageBox.Show("send message");
         CChatMessage chatMessage = new CChatMessage()
         {
             toName = PlayerInfo.chatName,

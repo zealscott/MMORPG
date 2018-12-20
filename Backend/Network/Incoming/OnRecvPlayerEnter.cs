@@ -47,52 +47,47 @@ namespace Backend.Network
 
             Console.WriteLine("send find friends");
 
-            //for debug
-            //Console.WriteLine("recv player enter: player speed:{0}", player.speed);
-
-            // debug: send treasure to frontend
-            //Treasure test = new Treasure()
-            //{
-            //    treasureId = 1,
-            //    name = "Amulet_1",
-            //    attack = 10
-            //};
-            //STreasureAttribute testInfo = new STreasureAttribute() { };
-            //testInfo.treasureAttri = new Dictionary<string, DTreasure>();
-            //testInfo.treasureAttri.Add(test.name, test.ToDTreasure());
-            //TreasureOwnership test2 = new TreasureOwnership()
-            //{
-            //    price = 10
-            //};
-            //testInfo.goldenT = new Dictionary<string, DTreasureOwnership>();
-            //testInfo.goldenT.Add(test.name, test2.ToDTreasureOwnership());
-            //channel.Send(testInfo);
-
-            
+            // send treasure attributes   
             ConnectDB connect = new ConnectDB();
-            STreasureAttribute testAttr = new STreasureAttribute() { };
-            testAttr.treasureAttri = new Dictionary<string, DTreasure>(connect.GetTreasureAttri());
-            foreach (KeyValuePair<string, DTreasure> tmp in testAttr.treasureAttri)
+            if (treasureAttributes.Count == 0 )
+            {
+                treasureAttributes = new Dictionary<string, DTreasure>(connect.GetTreasureAttri());
+            }
+            STreasureAttribute treasureAttribute = new STreasureAttribute()
+            {
+                treasureAttri = new Dictionary<string, DTreasure>(treasureAttributes)
+            };
+            foreach (KeyValuePair<string, DTreasure> tmp in treasureAttribute.treasureAttri)
             {
                 Console.WriteLine("from DB attribute: " + tmp.Key);
             }
-            channel.Send(testAttr);
+            channel.Send(treasureAttribute);
 
-            SSilverT testSilver = new SSilverT() { };
-            testSilver.silverT = new Dictionary<string, int>(connect.GetSilverT());
-            foreach (KeyValuePair<string, int> tmp in testSilver.silverT)
+            // send mall
+            if(backMall.Count == 0)
             {
-                Console.WriteLine("from DB silver: " + tmp.Key);
+                backMall = new Dictionary<string, DTreasureMall>(connect.DBGetMall());
             }
-            channel.Send(testSilver);
+            SMall mall = new SMall()
+            {
+                goods = new Dictionary<string, DTreasureMall>(backMall)
+            };
+            foreach (KeyValuePair<string, DTreasureMall> tmp in mall.goods)
+            {
+                Console.WriteLine("from DB mall: " + tmp.Key);
+            }
+            channel.Send(mall);
 
-            SGoldenT testGolden = new SGoldenT() { };
-            testGolden.goldenT = new Dictionary<string, DTreasureOwnership>(connect.GetGoldenT());
-            foreach (KeyValuePair<string, DTreasureOwnership> tmp in testGolden.goldenT)
+            // send package
+            SPackage package = new SPackage()
             {
-                Console.WriteLine("from DB golden: " + tmp.Key);
+                goods = new Dictionary<string, DTreasurePackage>(connect.DBGetPackage(player.user))   
+            };
+            foreach (KeyValuePair<string, DTreasurePackage> tmp in package.goods)
+            {
+                Console.WriteLine("from DB package: " + tmp.Key);
             }
-            channel.Send(testGolden);
+            channel.Send(package);
         }
     }
 }

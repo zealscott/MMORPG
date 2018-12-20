@@ -34,6 +34,20 @@ public class InventoryUI : MonoBehaviour
             cloned.transform.SetParent(InventoryGridContent.transform, false);
         }
 
+        foreach (var kv in TreasureInfo.playerTreasure)
+        {
+            for(int i = 0; i < kv.Value.number; i++)
+            {
+                GameObject cloned = GameObject.Instantiate(InventoryCell);
+                Button button = cloned.GetComponent<Button>();
+                Sprite icon = GetAllIcons.icons[kv.Key];
+                button.image.sprite = icon;
+                cloned.SetActive(true);
+                cloned.transform.SetParent(InventoryGridContent.transform, false);
+            }
+        }
+
+        // genreate empty cell
         for (int i = 0; i < capacity - count; i++)
         {
             GameObject cloned = GameObject.Instantiate(InventoryCell);

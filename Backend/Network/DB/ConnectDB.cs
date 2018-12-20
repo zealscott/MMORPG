@@ -10,8 +10,11 @@ namespace Backend.Network
         string logInSQL = "SELECT playerid FROM player WHERE name = @name AND passwd = @passwd";
         string GetPlayerAttriSQL = "SELECT * FROM player WHERE playerid = @playerid";
         string GetTreasureAttriSQL = "SELECT * FROM treasures";
-        string GetGoldenTreasureSQL = "SELECT * FROM treasurecollection WHERE sellnum > 0 ";
-        string GetSilverTreasureSQL = "SELECT * FROM mall";
-        string GetPlayerTreasureSQL = "SELECT * FROM treasurecollection WHERE playerid = @playerid";
+        string GetMallSQL = "SELECT * FROM mall";
+        string GetPackageSQL = "SELECT * FROM package WHERE playername = @playername";
+        string ChangeTreasureNumSQL = "UPDATE package SET ownnum = ownnum + @number WHERE playername = @playername AND treasurename = @treasurename";
+        string ChangeSilverNumSQL = "UPDATE player SET silvernum = silvernum - @silvernum WHERE name = @name";
+        string GoldTransactionSQL = "BEGIN; UPDATE player SET goldnum = goldnum + @goldCoin WHERE name = @seller; UPDATE player SET goldnum = goldnum - @goldCoin WHERE name = @buyer; INSERT INTO package(playername, treasurename) VALUES(@buyer, @goods); DELETE FROM mall WHERE TreasureName = @goods; COMMIT ";
+           
     }
 }

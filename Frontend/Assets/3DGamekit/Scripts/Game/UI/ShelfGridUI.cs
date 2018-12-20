@@ -15,13 +15,9 @@ public class ShelfGridUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        foreach (KeyValuePair<string, Sprite> kv in GetAllIcons.icons)
+        foreach (KeyValuePair<string, TreasureMall> goods in TreasureInfo.treasureMall)
         {
-            if (!TreasureInfo.silverT.ContainsKey(kv.Key))
-            {
-                continue;
-            }
-            string key = kv.Key;
+            string key = goods.Key;
             GameObject cloned = GameObject.Instantiate(ShelfItem);
             if (cloned == null)
             {
@@ -34,9 +30,10 @@ public class ShelfGridUI : MonoBehaviour
             {
                 continue;
             }
-            handler.Init(key, 1, TreasureInfo.silverT[key]);
-            Debug.Log("name: " + key + " defense: " + TreasureInfo.treasureAttri[key].defense);
+            handler.Init(key, goods.Value.price, goods.Value.isGold);
+            //Debug.Log("name: " + key + " defense: " + TreasureInfo.treasureAttri[key].defense);
         }
+
         ShelfItem.SetActive(false);
     }
 
@@ -48,19 +45,14 @@ public class ShelfGridUI : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (KeyValuePair<string, Treasure> tmp in TreasureInfo.treasureAttri)
-        {
-            Debug.Log("attribute: " + tmp.Key);
-        }
+        //foreach (KeyValuePair<string, Treasure> tmp in TreasureInfo.treasureAttri)
+        //{
+        //    Debug.Log("attribute: " + tmp.Key);
+        //}
 
-        foreach (KeyValuePair<string, int> tmp in TreasureInfo.silverT)
-        {
-            Debug.Log("silver: " + tmp.Key);
-        }
-
-        foreach (KeyValuePair<string, TreasureOwnership> tmp in TreasureInfo.goldenT)
-        {
-            Debug.Log("golden: " + tmp.Key);
-        }
+        //foreach (KeyValuePair<string, TreasureMall> tmp in TreasureInfo.treasureMall)
+        //{
+        //    Debug.Log("mall: " + tmp.Key);
+        //}
     }
 }

@@ -1,3 +1,5 @@
+-- \i E:/MMORPG/mmorpg.sql
+
 DROP DATABASE mmorpg;
 
 CREATE DATABASE mmorpg;
@@ -9,7 +11,7 @@ CREATE TABLE Player
 (
 	PlayerID serial PRIMARY KEY,	
 	Name char(20) not null UNIQUE,
-	Passwd char(30) not null, 
+	Passwd char(20) not null, 
 	GoldNum integer not null default 20,						-- 金币
 	SilverNum integer not null default 20,						-- 银币
 	LevelValue smallint CHECK(LevelValue > 0) default 1,		-- 等级
@@ -43,35 +45,28 @@ CREATE INDEX Treasures_index ON Treasures (TreasureID);
 
 
 -- 玩家拥有的宝物
-CREATE TABLE TreasureCollection 
+CREATE TABLE Package 
 (
-	PlayerID integer,
-	TreasureID integer,
-    Name char(20),												-- 宝物名称
+	PlayerName char(20),
+    TreasureName char(20),										-- 宝物名称
 	Wear boolean default false,   								-- 是否装备
 	OwnNum integer default 1,									-- 该宝物拥有的数量
-	Sell integer default 0,										-- 出售的宝物价格，若为0则没有出售
-	SellNum integer CHECK(SellNum <= OwnNum) default 0,			-- 出售的宝物数量（小于等于拥有的数量）
 
-	PRIMARY KEY(PlayerID, TreasureID),
-	FOREIGN KEY(PlayerID) REFERENCES Player(PlayerID),
-	FOREIGN KEY(TreasureID) REFERENCES Treasures(TreasureID),
-	FOREIGN KEY(Name) REFERENCES Treasures(Name)
+	PRIMARY KEY(PlayerName, TreasureName),
+	FOREIGN KEY(PlayerName) REFERENCES Player(Name),
+	FOREIGN KEY(TreasureName) REFERENCES Treasures(Name)
 );
-
-CREATE INDEX TreasureCollection_index ON TreasureCollection (PlayerID, TreasureID);
-CLUSTER TreasureCollection USING TreasureCollection_index;
 
 
 -- 商场中无限量供应的宝物
 CREATE TABLE Mall
 (
-	TreasureID integer,
-	Name char(20),						-- 宝物名称
-	Price integer not null, 			-- 宝物价格
+	TreasureName char(20),							-- 宝物名称
+	Price integer not null, 						-- 宝物价格
+	OwnerName char(20) default 'mall',				-- 拥有者
+	IsGold boolean default false,					-- 金币/银币购买
 
-	FOREIGN KEY(TreasureID) REFERENCES Treasures(TreasureID),
-	FOREIGN KEY(Name) REFERENCES Treasures(Name)
+	FOREIGN KEY(TreasureName) REFERENCES Treasures(Name)
 );
 
 

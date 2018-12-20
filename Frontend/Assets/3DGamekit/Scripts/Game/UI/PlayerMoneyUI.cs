@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMoneyUI : MonoBehaviour {
+public class PlayerMoneyUI : MonoBehaviour
+{
 
     public Text GoldNum;
     public Text SilverNum;
@@ -24,7 +25,8 @@ public class PlayerMoneyUI : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
+        GoldNum.text = PlayerInfo.GoldNum.ToString();
+        SilverNum.text = PlayerInfo.SilverNum.ToString();
     }
 
 }

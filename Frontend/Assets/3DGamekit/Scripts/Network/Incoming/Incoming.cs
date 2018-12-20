@@ -41,8 +41,8 @@ namespace Gamekit3D.Network
             register.Register(Command.S_FIND_FRIENDS, OnRecvFindFriends);
             register.Register(Command.S_CHAT_MESSAGE, OnRecvChatMessage);
             register.Register(Command.S_TREASURE_ATTRIBUTE, OnRecvTreasureAttribute);
-            register.Register(Command.S_SILVER_TREASURE, OnRecvSilverT);
-            register.Register(Command.S_GOLDEN_TREASURE, OnRecvGoldenT);
+            register.Register(Command.S_MALL, OnRecvMall);
+            register.Register(Command.S_PACKAGE, OnRecvPackage);
         }
 
         public void InitNetworkEntity()

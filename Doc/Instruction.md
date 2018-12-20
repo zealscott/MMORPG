@@ -92,6 +92,21 @@
 
 ### 后端
 
+#### OnRecvLogin.cs
+
+向前端发送商店及所有宝物属性信息，在后端维护了两个字典，`treasureAttributes` 存放所有宝物属性信息，`backMall` 存放商场中的宝物信息，当有新玩家登入时将这两个字典发送给前端，在第一个玩家进入时初始化，之后无需从数据库读，一致维护在内存中。
+
+#### OnRecvBuy.cs
+
+当收到前端消息`C_BUY`后，分别对购买的金币物品和银币物品进行操作
+
+- 对于购买的银币物品，修改数据库中玩家的银币值和背包，返回玩家购买后的剩余银币值和真正购买成功的宝物及其数量
+- 对于购买的金币物品，要保证数据的一致性，采用`事务`的方式处理每一个金币商品的购物请求，每个事务修改买家和卖家的金币数、修改宝物的所有者，最后返回玩家购买后的剩余金币值和真正购买成功的金币宝物
+
+#### DB/
+
+实现与数据库交互的逻辑，定义SQL语句，如读取宝物信息、商场宝物信息、修改金币银币值、增删玩家背包等
+
 ### 前端
 
 #### AttributeUI.cs
@@ -104,3 +119,26 @@
 
 同时，实现用户加入购物车或取消的过程。
 
+#### CounterUI.cs
+
+根据用户添加到购物车的物品，分别计算金币、银币物品的总价，并实现用户购买时向后端发送购买请求的逻辑。
+
+由于银币可以丢失，因此直接将用户购买的银币物品加入背包，而金币需要等数据库修改之后再添加。
+
+#### TextMash
+
+在Unity中，提供了富文本类型，可以将图片嵌入文本进行显示（也可以任意设置文本的字体、大小）。
+
+由于宝物在市场中的Layout固定，因此需要使用TextMash来添加金币、银币的标识，让用户知道这是金币购买还是银币购买。
+
+参考资料：
+
+1. [在Unity中将sprite分开为多个GameObject](http://www.unity.5helpyou.com/3625.html)
+2. 将普通Sprite制作为Sprite Asset（作为TextMash中图片的来源）：
+   - 右键需要制作的Sprite->Create->TextMashPro->Sprite Asset
+   - ![54520998732](C:\Users\scott\AppData\Local\Temp\1545209987326.png)
+3. 新建`TextMash --Text` 的GameObject，并添加Sprite Asset：
+   - ![54521010246](C:\Users\scott\AppData\Local\Temp\1545210102464.png)
+4. 在文本中使用对应的ID即可使用：
+   - ![54521012889](C:\Users\scott\AppData\Local\Temp\1545210128896.png)
+5. 在Script中使用该[GameObject](https://forum.unity.com/threads/from-unity-ui-to-textmeshpro.463619/)，需要添加NameSpace

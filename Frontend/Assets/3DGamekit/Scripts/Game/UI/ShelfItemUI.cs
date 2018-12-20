@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 public class ShelfItemUI : MonoBehaviour
 {
     public string itemName;
@@ -9,8 +11,7 @@ public class ShelfItemUI : MonoBehaviour
 
     public Button button;
     public Text textName;
-    public Text textCost;
-    public bool isGold;
+    public TextMeshProUGUI textCostMash;
     ItemDetailUI handler;
 
     private void Awake()
@@ -33,11 +34,11 @@ public class ShelfItemUI : MonoBehaviour
     }
 
     // type: 0 means golden while 1 means silver
-    public void Init(string name, int type, int price)
+    public void Init(string name, int price,bool isGold)
     {
         itemName = name;
         Sprite sprite;
-        if (button == null || textName == null || textCost == null)
+        if (button == null || textName == null || textCostMash == null)
         {
             return;
         }
@@ -47,12 +48,10 @@ public class ShelfItemUI : MonoBehaviour
         }
         button.image.sprite = sprite;
         textName.text = name;
-        textCost.text = price.ToString();
-
-        if (type == 0)
-            isGold = true;
+        if (isGold)
+            textCostMash.text =  "<sprite=1> "  + price.ToString();
         else
-            isGold = false;
+            textCostMash.text = "<sprite=0> " + price.ToString();
         // debug
     }
 
@@ -60,6 +59,6 @@ public class ShelfItemUI : MonoBehaviour
     public void AddToDetail()
     {
         if (handler != null)
-            handler.AddToDetail(itemName, isGold);
+            handler.AddToDetail(itemName);
     }
 }

@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class ItemDetailUI : MonoBehaviour {
 
-    public GameObject cartContent;
-
     public Image icon;
     public Image attributeImage;
     public Text itemName;
@@ -16,14 +14,10 @@ public class ItemDetailUI : MonoBehaviour {
     public Text itemSpeed;
     public Text itemAttack;
     public Text itemDefense;
-    CartGridUI handler;
+    public CartGridUI handler;
 
     private void Awake()
     {
-        if (cartContent != null)
-        {
-            handler = cartContent.GetComponent<CartGridUI>();
-        }
     }
 
 
@@ -42,29 +36,29 @@ public class ItemDetailUI : MonoBehaviour {
     {
         if (handler != null)
             handler.AddToCart(itemName.text);
-        Debug.Log(itemName.text);
+        //Debug.Log(itemName.text);
     }
 
-    public void AddToDetail(string name, bool isGold)
+    public void AddToDetail(string name)
     {
         icon.sprite = GetAllIcons.icons[name];
 
-        itemName.text = name;
-        itemIntellgience.text = TreasureInfo.treasureAttri[name].intelligence.ToString();
-        itemSpeed.text = TreasureInfo.treasureAttri[name].speed.ToString();
-        itemAttack.text = TreasureInfo.treasureAttri[name].attack.ToString();
-        itemDefense.text = TreasureInfo.treasureAttri[name].defense.ToString();
+        TreasureMall itemInMall =  TreasureInfo.treasureMall[name];
+        Treasure item =  TreasureInfo.treasureAttri[name];
 
-        if(isGold)
-        {
-            itemCost.text = TreasureInfo.goldenT[name].price.ToString();
+        // display attributes 
+        itemName.text = name;
+        itemIntellgience.text = item.intelligence.ToString();
+        itemSpeed.text = item.speed.ToString();
+        itemAttack.text = item.attack.ToString();
+        itemDefense.text = item.defense.ToString();
+        itemCost.text = itemInMall.price.ToString();
+
+        if(itemInMall.isGold)
             attributeImage.sprite = Resources.Load<Sprite>("AttributeGold");
-        }       
         else
-        {
-            itemCost.text = TreasureInfo.silverT[name].ToString();
             attributeImage.sprite = Resources.Load<Sprite>("AttributeSilver");
-        }           
+          
     }
 
 }

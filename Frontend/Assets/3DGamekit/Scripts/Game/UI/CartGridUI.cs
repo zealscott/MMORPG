@@ -71,12 +71,13 @@ public class CartGridUI : MonoBehaviour
         }
     }
 
-    public void OnBuyButtonClicked()
+    public void RemoveAllFromCart()
     {
         foreach (var kv in m_items)
         {
-            // TODO ...
+            Destroy(kv.Value);
         }
+        m_items.Clear();
     }
 
 }

@@ -10,15 +10,12 @@ namespace Gamekit3D
     public class TreasureInfo
     {
         // all treasures' attribute
-        static public Dictionary<string, Treasure> treasureAttri = new Dictionary<string, Treasure>(); 
+        static public Dictionary<string, Treasure> treasureAttri = new Dictionary<string, Treasure>();
 
-        // silver ones, the num is always infinite, name and price 
-        static public Dictionary<string, int> silverT = new Dictionary<string, int>();
-
-        // golden ones, which own to players
-        static public Dictionary<string, TreasureOwnership> goldenT = new Dictionary<string, TreasureOwnership>();
+        // goods in mall
+        static public Dictionary<string, TreasureMall> treasureMall = new Dictionary<string, TreasureMall>();
 
         // player's treasures
-        static public Dictionary<string, TreasureOwnership> playerTreasure = new Dictionary<string, TreasureOwnership>();
+        static public Dictionary<string, TreasurePackage> playerTreasure = new Dictionary<string, TreasurePackage>();
     }
 }
