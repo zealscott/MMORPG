@@ -158,6 +158,14 @@ namespace Common
         public int price;
         public bool isGold;
     }
+
+    [Serializable]
+    public class DTreasureBuy
+    {
+        public string name;
+        public int number;
+        public int type;
+    }
 }
 
 

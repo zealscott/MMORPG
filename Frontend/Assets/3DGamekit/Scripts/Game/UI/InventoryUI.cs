@@ -25,6 +25,8 @@ public class InventoryUI : MonoBehaviour
         int count = PlayerMyController.Instance.Inventory.Count;
         foreach (var kv in PlayerMyController.Instance.Inventory)
         {
+            //Debug.Log("inventory: " + kv.Value.name + " type: " + kv.Value.entityType);
+
             GameObject cloned = GameObject.Instantiate(InventoryCell);
             Button button = cloned.GetComponent<Button>();
             // TODO ... specify icon by item types
@@ -36,16 +38,15 @@ public class InventoryUI : MonoBehaviour
 
         foreach (var kv in TreasureInfo.playerTreasure)
         {
-            for(int i = 0; i < kv.Value.number; i++)
-            {
-                GameObject cloned = GameObject.Instantiate(InventoryCell);
-                Button button = cloned.GetComponent<Button>();
-                Sprite icon = GetAllIcons.icons[kv.Key];
-                button.image.sprite = icon;
-                cloned.SetActive(true);
-                cloned.transform.SetParent(InventoryGridContent.transform, false);
-            }
+            GameObject cloned = GameObject.Instantiate(InventoryCell);
+            Button button = cloned.GetComponent<Button>();
+            Sprite icon = GetAllIcons.icons[kv.Key];
+            button.image.sprite = icon;
+            cloned.SetActive(true);
+            cloned.transform.SetParent(InventoryGridContent.transform, false);
         }
+
+        count += TreasureInfo.playerTreasure.Count;
 
         // genreate empty cell
         for (int i = 0; i < capacity - count; i++)

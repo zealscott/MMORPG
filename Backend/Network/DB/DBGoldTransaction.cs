@@ -18,6 +18,8 @@ namespace Backend.Network
                 objCommand.Parameters.Add("@goods", NpgsqlTypes.NpgsqlDbType.Char).Value = goods;
                 objCommand.Parameters.Add("@seller", NpgsqlTypes.NpgsqlDbType.Char).Value = seller;
                 objCommand.Parameters.Add("@buyer", NpgsqlTypes.NpgsqlDbType.Char).Value = buyer;
+                objCommand.Parameters.Add("@IsGold", NpgsqlTypes.NpgsqlDbType.Boolean).Value = true;
+                objCommand.Parameters.Add("@TradeTime", NpgsqlTypes.NpgsqlDbType.Timestamp).Value = System.DateTime.Now;
                 conn.Open();
 
                 rowsAffected = objCommand.ExecuteNonQuery();

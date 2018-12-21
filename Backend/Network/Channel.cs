@@ -142,7 +142,7 @@ namespace Backend.Network
                     {
                         channel.m_recvStream.Seek(0, SeekOrigin.Begin);
                         Message message = (Message)channel.formatter.Deserialize(channel.m_recvStream);
-                        
+                        //Console.WriteLine(message.command);
                         MessageDelegate @delegate;
                         bool exists = channel.onMessageRecv.TryGetValue(message.command, out @delegate);
                         if (exists)

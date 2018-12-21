@@ -14,7 +14,7 @@ namespace Backend.Network
         string GetPackageSQL = "SELECT * FROM package WHERE playername = @playername";
         string ChangeTreasureNumSQL = "UPDATE package SET ownnum = ownnum + @number WHERE playername = @playername AND treasurename = @treasurename";
         string ChangeSilverNumSQL = "UPDATE player SET silvernum = silvernum - @silvernum WHERE name = @name";
-        string GoldTransactionSQL = "BEGIN; UPDATE player SET goldnum = goldnum + @goldCoin WHERE name = @seller; UPDATE player SET goldnum = goldnum - @goldCoin WHERE name = @buyer; INSERT INTO package(playername, treasurename) VALUES(@buyer, @goods); DELETE FROM mall WHERE TreasureName = @goods; COMMIT ";
-           
+        string GoldTransactionSQL = "BEGIN; UPDATE player SET goldnum = goldnum + @goldCoin WHERE name = @seller; UPDATE player SET goldnum = goldnum - @goldCoin WHERE name = @buyer; INSERT INTO package(playername, treasurename) VALUES(@buyer, @goods); DELETE FROM mall WHERE TreasureName = @goods; INSERT INTO trade (ItemName,SellerName,BuyerName,IsGold,Price,TradeTime) VALUES (@goods,@seller,@buyer,@IsGold,@goldCoin,@TradeTime); COMMIT ";
+        string AddTradeSQL = "INSERT INTO trade (ItemName,SellerName,BuyerName,IsGold,Num,Price,TradeTime) VALUES (@ItemName,@SellerName,@BuyerName,@IsGold,@Num,@Price,@TradeTime)";
     }
 }

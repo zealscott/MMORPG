@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Common;
 using Backend.Game;
+using System;
 
 namespace Backend.Network
 {
@@ -8,6 +9,7 @@ namespace Backend.Network
     {
         private void OnRecvPlayerTake(IChannel channel, Message message)
         {
+            Console.WriteLine("OnRecvPlayerTake");
             CPlayerTake request = message as CPlayerTake;
             Player player = (Player)channel.GetContent();
 

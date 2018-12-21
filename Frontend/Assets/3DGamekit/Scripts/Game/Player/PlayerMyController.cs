@@ -198,6 +198,7 @@ namespace Gamekit3D
             msg.targetName = weapon.name;
             msg.playerId = m_entity.entityId;
             msg.targetId = weaponEntity.entityId;
+            Debug.Log("PlayerTakeWeapon: " + weapon.name);
             MyNetwork.Send(msg);
         }
 

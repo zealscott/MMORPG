@@ -182,7 +182,7 @@ namespace Backend.Game
             msgEquip.itemName = this.m_weapon.name;
             msgEquip.itemID = this.m_weapon.entityId;
 
-            Broadcast(msgEquip);
+            Broadcast(msgEquip,false);
         }
 
         public bool IsEquipedWeapon()

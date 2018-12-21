@@ -15,8 +15,8 @@ public class CounterUI : MonoBehaviour
     // overall detail 
     int totalGold = 0;
     int totalSilver = 0;
-    Dictionary<string, int> silverGoods = new Dictionary<string, int>();
-    List<string> goldGoods = new List<string>();
+    Dictionary<string, int> SilverGoods = new Dictionary<string, int>();
+    List<string> GoldGoods = new List<string>();
     private void Awake()
     {
     }
@@ -36,38 +36,40 @@ public class CounterUI : MonoBehaviour
     public void IncreaseGold(string name, int Price)
     {
         totalGold += Price;
-        goldGoods.Add(name);
+        GoldGoods.Add(name);
         TextGoldNeed.text = totalGold.ToString();
     }
 
     public void DecreaseGold(string name, int Price)
     {
         totalGold -= Price;
-        goldGoods.Remove(name);
+        GoldGoods.Remove(name);
         TextGoldNeed.text = totalGold.ToString();
     }
 
     public void IncreaseSilver(string name, int Price)
     {
         totalSilver += Price;
-        if (silverGoods.ContainsKey(name))
+        if (SilverGoods.ContainsKey(name))
         {
-            silverGoods[name]++;
+            SilverGoods[name]++;
         }
         else
-            silverGoods.Add(name, 1);
+            SilverGoods.Add(name, 1);
+
         TextSilverNeed.text = totalSilver.ToString();
     }
 
     public void DecreaseSilver(string name, int Price)
     {
         totalSilver -= Price;
-        if (silverGoods[name] == 1)
+        if (SilverGoods[name] == 1)
         {
-            silverGoods.Remove(name);
+            SilverGoods.Remove(name);
         }
         else
-            silverGoods[name]--;
+            SilverGoods[name]--;
+
         TextSilverNeed.text = totalSilver.ToString();
     }
 
@@ -78,32 +80,28 @@ public class CounterUI : MonoBehaviour
         {
             PlayerInfo.SilverNum -= totalSilver;
 
-            // whether the silver god 
-            Dictionary<string, int> OldSilverGoods = new Dictionary<string, int>();
-
-            foreach (var kv in silverGoods)
-            {
-                if (TreasureInfo.playerTreasure.ContainsKey(kv.Key))
-                {
-                    OldSilverGoods.Add(kv.Key, kv.Value);
-                    silverGoods.Remove(kv.Key);
-                }
-            }
-
             CBuy buyMessage = new CBuy()
             {
-                totalGold = this.totalGold,
-                totalSilver = this.totalSilver,
-                newSilverGoods = this.silverGoods,
-                //oldSilverGoods = OldSilverGoods,
-                goldGoods = this.goldGoods
+                totalGold = totalGold,
+                totalSilver = totalSilver,
+                Goods = new List<DTreasureBuy>()
             };
-            if (OldSilverGoods.Count > 0)
-                buyMessage.oldSilverGoods = OldSilverGoods;
 
+            foreach (string GoldName in GoldGoods)
+            {
+                buyMessage.Goods.Add(new DTreasureBuy() { name = GoldName, type = 0 });
+            }
+
+            foreach (var kv in SilverGoods)
+            {
+                string sliverName = kv.Key;
+                int sliverNum = kv.Value;
+                if (TreasureInfo.playerTreasure.ContainsKey(sliverName))
+                    buyMessage.Goods.Add(new DTreasureBuy() { name = sliverName, number = sliverNum, type = 2 });
+                else
+                    buyMessage.Goods.Add(new DTreasureBuy() { name = sliverName, number = sliverNum, type = 1 });
+            }
             MyNetwork.Send(buyMessage);
-
-            Debug.Log("buy send!");
 
             //TODO: add silver treasure to package
 
@@ -122,8 +120,8 @@ public class CounterUI : MonoBehaviour
         totalSilver = 0;
         TextSilverNeed.text = totalSilver.ToString();
         TextGoldNeed.text = totalGold.ToString();
-        silverGoods.Clear();
-        goldGoods.Clear();
+        SilverGoods.Clear();
+        GoldGoods.Clear();
         CartGrid.RemoveAllFromCart();
     }
 
