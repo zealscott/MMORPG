@@ -74,31 +74,26 @@ CREATE TABLE Mall
 CREATE TABLE Battle 
 (
 	BattleID serial PRIMARY KEY, 
-	WinnerID integer not null,
-	LoserID integer not null,
-	FightTime TIMESTAMP not null,
-	FOREIGN KEY(WinnerID) REFERENCES Player(PlayerID),
-	FOREIGN KEY(LoserID) REFERENCES Player(PlayerID)
+	WinnerName char(20),
+	LoserName char(20),
+	FightTime TIMESTAMP not null
 );
 
-CREATE INDEX Battle_index ON Battle (BattleID);
 
 
 -- 交易记录
 create table Trade 
 (
 	TradeID serial PRIMARY KEY,
-	ItemID integer,
-	SellerID integer,
-	BuyerID integer,
-	Price integer CHECK(Price > 0),
-    TradeTime TIMESTAMP not null,
-	FOREIGN KEY(ItemID) REFERENCES Treasures(TreasureID),
-	FOREIGN KEY(SellerID) REFERENCES Player(PlayerID),
-	FOREIGN KEY(BuyerID) REFERENCES Player(PlayerID)
+	ItemName char(20),
+	SellerName char(20),
+	BuyerName char(20),
+	IsGold boolean,
+	Num integer CHECK(Num > 0) default 1,
+	Price integer CHECK(Price >= 0),
+    TradeTime TIMESTAMP not null
 );
 
-CREATE INDEX Trade_index ON Trade (TradeID);
 
 
 -- 聊天记录

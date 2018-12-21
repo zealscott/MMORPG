@@ -230,3 +230,16 @@ INSERT INTO
 package(playername, treasurename, wear, ownnum)
 VALUES('test', 'Bow', false, 1);
 
+
+-- test transaction
+BEGIN;
+UPDATE player SET goldnum = goldnum + 10
+    WHERE name = '123';
+UPDATE player SET goldnum = goldnum - 10
+    WHERE name = 'test';
+INSERT INTO 
+    package(playername, treasurename)
+    VALUES('123', 'Armor_2');
+DELETE FROM mall
+    WHERE TreasureName = 'Armor_2';
+COMMIT;
