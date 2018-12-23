@@ -40,6 +40,11 @@ namespace Backend.Network
             // DEBUG ..
             register.Register(Command.C_FIND_PATH, OnRecvFindPath);
             register.Register(Command.C_BUY, OnRecvBuy);
+            register.Register(Command.C_PLAYER_ATTRIBUTE, OnRecvPlayerAttribute);
+            register.Register(Command.C_TREASURE_WEAR, OnRecvTreasureWear);
+            register.Register(Command.C_SELL_SILVER, OnRecvSellSilver);
+            register.Register(Command.C_SELL_GOLD, OnRecvSellGold);
+            register.Register(Command.C_MALL, OnRecvCMall);
         }
 
 

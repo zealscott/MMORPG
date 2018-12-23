@@ -11,7 +11,7 @@ namespace Gamekit3D.Network
         private void OnRecvTreasureAttribute(IChannel channel, Message message)
         {
             STreasureAttribute msg = message as STreasureAttribute;
-
+            TreasureInfo.treasureAttri = new Dictionary<string, Treasure>();
             foreach (KeyValuePair<string, DTreasure> tmp in msg.treasureAttri)
             {
                 TreasureInfo.treasureAttri.Add(tmp.Key, new Treasure().FromDTreasure(tmp.Value));

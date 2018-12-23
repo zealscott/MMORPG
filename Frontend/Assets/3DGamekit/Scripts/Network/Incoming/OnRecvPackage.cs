@@ -11,7 +11,8 @@ namespace Gamekit3D.Network
         private void OnRecvPackage(IChannel channel, Message message)
         {
             SPackage msg = message as SPackage;
-            foreach(KeyValuePair<string, DTreasurePackage> tmp in msg.goods)
+            TreasureInfo.playerTreasure = new Dictionary<string, TreasurePackage>();
+            foreach (KeyValuePair<string, DTreasurePackage> tmp in msg.goods)
             {
                 TreasureInfo.playerTreasure.Add(tmp.Key, new TreasurePackage().FromDTreasurePackage(tmp.Value));
             }

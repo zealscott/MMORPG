@@ -13,7 +13,7 @@ namespace Backend.Network
             NpgsqlConnection conn = new NpgsqlConnection(connStr);
             using (conn)
             {
-                NpgsqlCommand objCommand = new NpgsqlCommand(ChangeSilverNumSQL, conn);
+                NpgsqlCommand objCommand = new NpgsqlCommand(UpdataSilverNumSQL, conn);
                 objCommand.Parameters.Add("@silvernum", NpgsqlTypes.NpgsqlDbType.Integer).Value = silvernum;
                 objCommand.Parameters.Add("@name", NpgsqlTypes.NpgsqlDbType.Char).Value = playername;
                 conn.Open();

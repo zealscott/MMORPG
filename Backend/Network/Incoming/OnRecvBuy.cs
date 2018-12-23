@@ -57,14 +57,14 @@ namespace Backend.Network
                         // send to seller
                         if (OnlinePlayers.ContainsKey(seller_))
                         {
+                            Player toPlayer = OnlinePlayers[seller_];
+                            toPlayer.GoldNum += price_;
                             SSendToSeller sellerMsg = new SSendToSeller()
                             {
-                                price = price_,
+                                goldCoin = toPlayer.GoldNum,
                                 goodsName = goods
-                            };
-                            Player toPlayer = OnlinePlayers[seller_];
-                            toPlayer.connection.Send(sellerMsg);
-                            toPlayer.GoldNum += price_;
+                            };                           
+                            toPlayer.connection.Send(sellerMsg);                      
                         }
                         // remove from backMall
                         backMall.Remove(goods);
@@ -100,13 +100,13 @@ namespace Backend.Network
                         connect.AddTrade(goods.Key, "mall", buyer_, goods.Value, backMall[goods.Key].price);
                         Console.WriteLine("old silver insert result: " + tmpJudge);
                     }
-                }                
+                }
 
                 // minus silver coins
-                Console.WriteLine("player: " + buyer_ + " silverNum minus: " + request.totalSilver);
-                tmpJudge = connect.UpdateSilverNum(buyer_, request.totalSilver);
                 Console.WriteLine("silverNum update result: " + tmpJudge);
                 player.SilverNum -= request.totalSilver;
+                Console.WriteLine("player: " + buyer_ + " silverNum minus: " + request.totalSilver);
+                tmpJudge = connect.UpdateSilverNum(buyer_, player.SilverNum);                
             }
         }
     }

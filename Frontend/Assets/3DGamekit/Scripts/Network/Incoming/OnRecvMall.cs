@@ -11,10 +11,12 @@ namespace Gamekit3D.Network
         private void OnRecvMall(IChannel channel, Message message)
         {
             SMall msg = message as SMall;
+            TreasureInfo.treasureMall = new Dictionary<string, TreasureMall>();
             foreach (KeyValuePair<string, DTreasureMall> tmp in msg.goods)
             {
                 TreasureInfo.treasureMall.Add(tmp.Key, new TreasureMall().FromDTreasureMall(tmp.Value));
             }
+            MessageBox.Show("OnRecvMall");
         }
     }
 }

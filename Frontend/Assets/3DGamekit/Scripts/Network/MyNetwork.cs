@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using Common;
+using System.Threading;
 
 namespace Gamekit3D.Network
 {
@@ -61,6 +62,9 @@ namespace Gamekit3D.Network
                 }
                 SceneManager.sceneLoaded += RecvSceneLoaded;
             }
+
+            // ask for mall info every 1 min
+            ThreadPool.QueueUserWorkItem(incomming.AskMallUpdate, 60000);
         }
         void Start()
         {

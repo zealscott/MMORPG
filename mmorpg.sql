@@ -33,7 +33,7 @@ CREATE TABLE Treasures
 (
 	TreasureID serial PRIMARY KEY,
     Name char(20) not null UNIQUE,					-- 宝物名称
-	MainType integer,								-- 宝物类型：helmet:1\armour:2\leftWeapon:3\rightWeapon:4\shield:5\magicPortion:6
+	MainType integer,								-- 宝物类型：helmet:1\armour:2\leftWeapon:3\rightWeapon:4\shield:5\elixir:6
 	SpeedValue integer,								-- 速度
 	IntelligenceValue integer,						-- 智力
 	AttackValue integer,							-- 攻击

@@ -11,8 +11,6 @@ namespace Gamekit3D.Network
             SFindFriends msg = message as SFindFriends;
             PlayerInfo.friends = new Dictionary<int, string>(msg.friends);
             PlayerInfo.friends.Remove(PlayerInfo.playerId);
-
-            MessageBox.Show("receive friend message");
         }
     }
 }

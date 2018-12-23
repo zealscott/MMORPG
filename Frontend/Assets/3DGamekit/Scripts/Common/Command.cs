@@ -51,6 +51,11 @@ namespace Common
         // ADD
         C_CHAT_MESSAGE,
         C_BUY,
+        C_PLAYER_ATTRIBUTE,
+        C_TREASURE_WEAR,
+        C_SELL_GOLD,
+        C_SELL_SILVER,
+        C_MALL,
         CEND,
 
         DEBUGGING, // THE FOLLOWING MESSEGES ARE FOR DEBUGGING

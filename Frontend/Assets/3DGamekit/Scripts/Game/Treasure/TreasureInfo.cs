@@ -17,5 +17,8 @@ namespace Gamekit3D
 
         // player's treasures
         static public Dictionary<string, TreasurePackage> playerTreasure = new Dictionary<string, TreasurePackage>();
+
+        // player's wear or put off modified treasures
+        static public Dictionary<string, bool> modifiedTreasure = new Dictionary<string, bool>();
     }
 }

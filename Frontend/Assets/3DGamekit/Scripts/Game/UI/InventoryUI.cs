@@ -7,7 +7,6 @@ using Gamekit3D.Network;
 
 public class InventoryUI : MonoBehaviour
 {
-
     public GameObject InventoryCell;
     public GameObject InventoryGridContent;
 
@@ -25,8 +24,6 @@ public class InventoryUI : MonoBehaviour
         int count = PlayerMyController.Instance.Inventory.Count;
         foreach (var kv in PlayerMyController.Instance.Inventory)
         {
-            //Debug.Log("inventory: " + kv.Value.name + " type: " + kv.Value.entityType);
-
             GameObject cloned = GameObject.Instantiate(InventoryCell);
             Button button = cloned.GetComponent<Button>();
             // TODO ... specify icon by item types
@@ -34,16 +31,22 @@ public class InventoryUI : MonoBehaviour
             button.image.sprite = icon;
             cloned.SetActive(true);
             cloned.transform.SetParent(InventoryGridContent.transform, false);
+            InventoryItemUI handler = cloned.GetComponent<InventoryItemUI>();
+            handler.Init("Sword_2");
         }
 
         foreach (var kv in TreasureInfo.playerTreasure)
         {
+            if (kv.Value.wear == true & kv.Value.number == 1)
+                continue;
             GameObject cloned = GameObject.Instantiate(InventoryCell);
             Button button = cloned.GetComponent<Button>();
             Sprite icon = GetAllIcons.icons[kv.Key];
             button.image.sprite = icon;
             cloned.SetActive(true);
             cloned.transform.SetParent(InventoryGridContent.transform, false);
+            InventoryItemUI handler = cloned.GetComponent<InventoryItemUI>();
+            handler.Init(kv.Key);
         }
 
         count += TreasureInfo.playerTreasure.Count;
@@ -62,6 +65,7 @@ public class InventoryUI : MonoBehaviour
         int cellCount = InventoryGridContent.transform.childCount;
         foreach (Transform transform in InventoryGridContent.transform)
         {
+            //Debug.Log("destory inventory: " + transform.name);
             Destroy(transform.gameObject);
         }
         PlayerMyController.Instance.EnabledWindowCount--;
@@ -74,7 +78,7 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void ExtendBagCapacity(int n)
@@ -86,5 +90,11 @@ public class InventoryUI : MonoBehaviour
             cloned.SetActive(true);
             cloned.transform.SetParent(InventoryGridContent.transform, false);
         }
+    }
+
+    public void UpdateInventory()
+    {
+        OnDisable();
+        OnEnable();
     }
 }

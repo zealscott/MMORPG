@@ -13,7 +13,7 @@ namespace Backend.Network
             NpgsqlConnection conn = new NpgsqlConnection(connStr);
             using (conn)
             {
-                NpgsqlCommand objCommand = new NpgsqlCommand(ChangeTreasureNumSQL, conn);
+                NpgsqlCommand objCommand = new NpgsqlCommand(UpdateTreasureNumSQL, conn);
                 objCommand.Parameters.Add("@number", NpgsqlTypes.NpgsqlDbType.Integer).Value = number;
                 objCommand.Parameters.Add("@playername", NpgsqlTypes.NpgsqlDbType.Char).Value = playername;
                 objCommand.Parameters.Add("@treasurename", NpgsqlTypes.NpgsqlDbType.Char).Value = treasurename;

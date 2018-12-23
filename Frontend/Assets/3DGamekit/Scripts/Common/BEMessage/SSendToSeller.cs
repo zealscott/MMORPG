@@ -8,7 +8,7 @@ namespace Common
     public class SSendToSeller : Message
     {
         public SSendToSeller() : base(Command.S_SEND_TO_SELLER) { }
-        public int price;
+        public int goldCoin;
         public string goodsName;
     }
 }

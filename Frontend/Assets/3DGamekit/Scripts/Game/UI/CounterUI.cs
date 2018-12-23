@@ -97,13 +97,19 @@ public class CounterUI : MonoBehaviour
                 string sliverName = kv.Key;
                 int sliverNum = kv.Value;
                 if (TreasureInfo.playerTreasure.ContainsKey(sliverName))
-                    buyMessage.Goods.Add(new DTreasureBuy() { name = sliverName, number = sliverNum, type = 2 });
+                {
+                    TreasureInfo.playerTreasure[sliverName].number += sliverNum;
+                    buyMessage.Goods.Add(new DTreasureBuy() { name = sliverName, number = TreasureInfo.playerTreasure[sliverName].number, type = 2 });
+                }                   
                 else
+                {
+                    TreasurePackage tmp = new TreasurePackage() {number = sliverNum, wear = false };
+                    TreasureInfo.playerTreasure.Add(sliverName, tmp);
                     buyMessage.Goods.Add(new DTreasureBuy() { name = sliverName, number = sliverNum, type = 1 });
+                }
+                    
             }
             MyNetwork.Send(buyMessage);
-
-            //TODO: add silver treasure to package
 
             cleanCache();
         }

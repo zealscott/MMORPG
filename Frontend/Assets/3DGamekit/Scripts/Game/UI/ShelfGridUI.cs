@@ -1,6 +1,7 @@
 ﻿using Gamekit3D;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,17 @@ public class ShelfGridUI : MonoBehaviour
     }
     // Use this for initialization
     void Start()
+    {
+        ShelfItem.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    private void OnEnable()
     {
         foreach (KeyValuePair<string, TreasureMall> goods in TreasureInfo.treasureMall)
         {
@@ -31,28 +43,16 @@ public class ShelfGridUI : MonoBehaviour
                 continue;
             }
             handler.Init(key, goods.Value.price, goods.Value.isGold);
-            //Debug.Log("name: " + key + " defense: " + TreasureInfo.treasureAttri[key].defense);
+            //MessageBox.Show("mall: " + key);
         }
-
-        ShelfItem.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-
-    }
-
-    private void OnEnable()
-    {
-        //foreach (KeyValuePair<string, Treasure> tmp in TreasureInfo.treasureAttri)
-        //{
-        //    Debug.Log("attribute: " + tmp.Key);
-        //}
-
-        //foreach (KeyValuePair<string, TreasureMall> tmp in TreasureInfo.treasureMall)
-        //{
-        //    Debug.Log("mall: " + tmp.Key);
-        //}
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            GameObject go = this.transform.GetChild(i).gameObject;
+            Destroy(go);
+        }
     }
 }
