@@ -8,6 +8,8 @@ public class ItemDetailUI : MonoBehaviour {
 
     public Image icon;
     public Image attributeImage;
+    public Image itemSellerIcon;
+    public Text itemSellerName;
     public Text itemName;
     public Text itemCost;
     public Text itemIntellgience;
@@ -24,6 +26,11 @@ public class ItemDetailUI : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+    }
+
+    private void OnEnable()
+    {
+        itemSellerIcon.enabled = false;
     }
 
     // Update is called once per frame
@@ -55,7 +62,12 @@ public class ItemDetailUI : MonoBehaviour {
         itemCost.text = itemInMall.price.ToString();
 
         if(itemInMall.isGold)
+        {
             attributeImage.sprite = Resources.Load<Sprite>("AttributeGold");
+            itemSellerIcon.enabled = true;
+            itemSellerName.text = itemInMall.ownerName;
+        }
+            
         else
             attributeImage.sprite = Resources.Load<Sprite>("AttributeSilver");
           
