@@ -12,11 +12,10 @@ namespace Gamekit3D
         static public int playerId = 0;
         static public string name = "";
         static public string chatName = "";
-        static public Dictionary<string, List<string> > chatMessage = new Dictionary<string, List<string> >();   
 
         static public int currentHP = 5;
         static public int intelligence = 100;
-        static public int speed =  20;
+        static public int speed = 20;
         static public int level = 1;
         static public int attack = 20;
         static public int defense = 20;
@@ -25,5 +24,8 @@ namespace Gamekit3D
         static public int SilverNum = 10;
 
         static public Dictionary<int, string> friends = new Dictionary<int, string>();
+        static public Dictionary<string, List<string>> chatMessage = new Dictionary<string, List<string>>();
+        static public Dictionary<string, List<string>> chatHistory = new Dictionary<string, List<string>>();
+        static public Dictionary<string, string> chatHistoryBitMap = new Dictionary<string, string>();
     }
 }

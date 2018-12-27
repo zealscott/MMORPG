@@ -20,5 +20,6 @@ namespace Backend.Network
         string UpdateTreasureWearSQL = "UPDATE package SET wear = @wear WHERE playername = @playername AND treasurename = @treasurename";
         string DeleteFromPackageSQL = "Delete FROM package WHERE playername = @playername AND treasurename = @treasurename";
         string AddToMallSQL = "INSERT INTO mall(treasurename, price, ownername, isgold) VALUES (@treasurename, @price, @ownername, @isgold)";
+        string GetChatHistorySQL = "SELECT fromwho,content FROM chatlog WHERE fromwho IN (@sender,@receiver) AND towho IN (@sender,@receiver) ORDER BY chattime DESC LIMIT @maxNum";
     }
 }

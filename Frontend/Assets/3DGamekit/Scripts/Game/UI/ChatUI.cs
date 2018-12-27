@@ -6,6 +6,7 @@ using TMPro;
 using Gamekit3D;
 using Common;
 using Gamekit3D.Network;
+using System;
 
 public class ChatUI : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class ChatUI : MonoBehaviour
     private void OnDisable()
     {
         // delete all the messages 
-        for(int i = 0; i < this.transform.childCount; i++)
+        for (int i = 0; i < this.transform.childCount; i++)
         {
             GameObject go = this.transform.GetChild(i).gameObject;
             //Debug.Log(go);
@@ -51,13 +52,33 @@ public class ChatUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerInfo.chatMessage.ContainsKey(PlayerInfo.chatName))
+        string chatWith = PlayerInfo.chatName;
+       // receive message
+        if (PlayerInfo.chatMessage.ContainsKey(chatWith))
         {
-            foreach(string messages in PlayerInfo.chatMessage[PlayerInfo.chatName])
+            foreach (string messages in PlayerInfo.chatMessage[chatWith])
             {
                 ReceiveFriendMessage(messages);
             }
-            PlayerInfo.chatMessage.Remove(PlayerInfo.chatName);
+            PlayerInfo.chatMessage.Remove(chatWith);
+        }
+        // receive chat history
+        if (PlayerInfo.chatHistory.ContainsKey(chatWith))
+        {
+            MessageBox.Show("chat history with " + chatWith);
+
+            List<string> chatLog = PlayerInfo.chatHistory[chatWith];
+            string bitWho = PlayerInfo.chatHistoryBitMap[chatWith];
+
+            for (int index = 0; index < chatLog.Count; index++)
+            {
+                if (bitWho[index] == '0')
+                    ReceiveFriendMessage(chatLog[index]);
+                else
+                    SendMyMessage(chatLog[index]);
+            }
+            PlayerInfo.chatHistory.Remove(chatWith);
+            PlayerInfo.chatHistoryBitMap.Remove(chatWith);
         }
     }
 
@@ -108,6 +129,26 @@ public class ChatUI : MonoBehaviour
         input.text = "";
     }
 
+    public void OnChatHistoryButtonClick(InputField inputNum)
+    {
+        int num = 0;
+        if (inputNum == null || !Int32.TryParse(inputNum.text, out num))
+        {
+            inputNum.text = "";
+            return;
+        }
+
+        CGetChatHistory chatHistoryMessage = new CGetChatHistory()
+        {
+            chatWithName = PlayerInfo.chatName,
+            maxChatNum = num
+        };
+        MyNetwork.Send(chatHistoryMessage);
+
+        inputNum.text = "";
+    }
+
+
     void AddElement(GameObject element, string text)
     {
         TextMeshProUGUI textMesh = element.GetComponentInChildren<TextMeshProUGUI>();
@@ -142,14 +183,6 @@ public class ChatUI : MonoBehaviour
         scrollRect.normalizedPosition = new Vector2(0, 0);
     }
 
-    void Test()
-    {
-        //AddNewMessage(true, "my message send");
-        //AddNewMessage(false, "friend message receive");
-
-        SendMyMessage("hello");
-        ReceiveFriendMessage("hello");
-    }
 
     /*
     void AddNewMessage(bool mine, string message)
