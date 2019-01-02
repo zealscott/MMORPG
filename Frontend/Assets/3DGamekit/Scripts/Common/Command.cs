@@ -60,6 +60,7 @@ namespace Common
         C_MALL,
         C_GETCHATHISTORY,
         C_NOT_SELL,
+        C_USE_HP,
         CEND,
         
 

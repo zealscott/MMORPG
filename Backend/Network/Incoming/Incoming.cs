@@ -47,6 +47,7 @@ namespace Backend.Network
             register.Register(Command.C_MALL, OnRecvCMall);
             register.Register(Command.C_GETCHATHISTORY, OnRecvGetChatHistory);
             register.Register(Command.C_NOT_SELL, OnRecvNotSell);
+            register.Register(Command.C_USE_HP, OnRecvUseHp);
         }
 
 

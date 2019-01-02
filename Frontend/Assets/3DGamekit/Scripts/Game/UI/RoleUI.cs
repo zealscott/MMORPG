@@ -83,11 +83,6 @@ public class RoleUI : MonoBehaviour
         DefenseValue.SetText(PlayerInfo.defense.ToString(), true);
     }
 
-    void Test()
-    {
-        HPValue.text = "100";
-        IntelligenceValue.text = "100";
-    }
 
     public void InitUI(PlayerController controller)
     {

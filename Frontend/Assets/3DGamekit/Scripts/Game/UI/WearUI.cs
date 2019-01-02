@@ -19,6 +19,7 @@ public class WearUI : MonoBehaviour
     PacakgeAttributeUI packageHandler;
     TypeUI typeHandler;
 
+
     private void Awake()
     {
         if (ItemDetail != null)
@@ -46,6 +47,8 @@ public class WearUI : MonoBehaviour
     {
 
     }
+
+    
     
     public void ShowAttributes(string name)
     {

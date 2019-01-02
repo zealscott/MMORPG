@@ -14,6 +14,7 @@ public class PacakgeAttributeUI : MonoBehaviour
     public Text itemType;
     WearUI handlerWear;
     SellUI handlerSell;
+    
 
     private void Awake()
     {
@@ -61,7 +62,7 @@ public class PacakgeAttributeUI : MonoBehaviour
         if (handlerWear != null)
         {
             handlerWear.ShowAttributes(itemName.text);
-        }            
+        }                 
     }
 
     public void ClickSell()

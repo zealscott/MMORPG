@@ -13,6 +13,7 @@ namespace Backend.Network
             SMall msg = new SMall();
             msg.goods = new Dictionary<string, DTreasureMall>(backMall);
             channel.Send(msg);
-        }    
+        }
+        
     }
 }

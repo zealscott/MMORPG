@@ -206,6 +206,7 @@
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CSellGold.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CSellSilver.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CTreasureWear.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CUseHp.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\IChannel.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\IRegister.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\Message.cs" />
@@ -332,6 +333,7 @@
     <Compile Include="Assets\3DGamekit\Scripts\Game\Treasure\TreasureInfo.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\Treasure\TreasureMall.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\Treasure\TreasurePackage.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\UI\AddHpUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\AttributeUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\ButtonHandler.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\CartGridUI.cs" />

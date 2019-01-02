@@ -9,6 +9,7 @@ public class InventoryItemUI : MonoBehaviour
     public string itemName;
     public GameObject ItemDetail;
     PacakgeAttributeUI handler;
+    public GameObject AddHpObject;
 
     private void Awake()
     {
@@ -37,7 +38,17 @@ public class InventoryItemUI : MonoBehaviour
 
     public void AddToDetail()
     {
-        if (handler != null)
-            handler.ShowAttributes(itemName);
+        if (itemName.Equals("Elixir_3"))
+        {
+            if (AddHpObject != null)
+            {
+                AddHpObject.SetActive(true);
+            }
+        }
+        else
+        {
+            if (handler != null)
+                handler.ShowAttributes(itemName);
+        }      
     }
 }
