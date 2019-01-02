@@ -46,6 +46,7 @@ namespace Backend.Network
             register.Register(Command.C_SELL_GOLD, OnRecvSellGold);
             register.Register(Command.C_MALL, OnRecvCMall);
             register.Register(Command.C_GETCHATHISTORY, OnRecvGetChatHistory);
+            register.Register(Command.C_NOT_SELL, OnRecvNotSell);
         }
 
 

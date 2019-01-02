@@ -194,6 +194,7 @@
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CGetChatHistory.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CLogin.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CMall.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CNotSell.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CPlayerAttack.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CPlayerAttribute.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CPlayerEnter.cs" />
@@ -348,9 +349,12 @@
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\ItemDetailUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\KeyUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\MenuActivityController.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\UI\NotSellUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\PacakgeAttributeUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\PlayerMoneyUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\RoleUI.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\UI\SelfSellItemUI.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\UI\SelfSellUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\SellUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\SetCursorMode.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\ShelfGridUI.cs" />

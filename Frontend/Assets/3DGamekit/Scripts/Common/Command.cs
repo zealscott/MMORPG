@@ -35,8 +35,9 @@ namespace Common
         S_PACKAGE,
         S_BUY_GOLD_RESULT,
         S_SEND_TO_SELLER,
-        SEND,
         S_GETCHATHISTORY,
+        SEND,
+        
 
         CBEGIN,
         C_LOGIN,
@@ -57,8 +58,10 @@ namespace Common
         C_SELL_GOLD,
         C_SELL_SILVER,
         C_MALL,
-        CEND,
         C_GETCHATHISTORY,
+        C_NOT_SELL,
+        CEND,
+        
 
         DEBUGGING, // THE FOLLOWING MESSEGES ARE FOR DEBUGGING
         C_FIND_PATH,

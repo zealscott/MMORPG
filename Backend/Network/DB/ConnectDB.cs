@@ -21,5 +21,7 @@ namespace Backend.Network
         string DeleteFromPackageSQL = "Delete FROM package WHERE playername = @playername AND treasurename = @treasurename";
         string AddToMallSQL = "INSERT INTO mall(treasurename, price, ownername, isgold) VALUES (@treasurename, @price, @ownername, @isgold)";
         string GetChatHistorySQL = "SELECT fromwho,content FROM chatlog WHERE fromwho IN (@sender,@receiver) AND towho IN (@sender,@receiver) ORDER BY chattime DESC LIMIT @maxNum";
+        string AddToPackageSQL = "INSERT INTO package(playername, treasurename, wear, ownnum) VALUES(@playername, @treasurename, false, 1)";
+        string RemoveFromMallSQL = "Delete FROM mall WHERE ownername = @ownername AND treasurename = @treasurename";
     }
 }

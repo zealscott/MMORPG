@@ -39,6 +39,7 @@ public class InventoryUI : MonoBehaviour
         {
             if (kv.Value.wear == true & kv.Value.number == 1)
                 continue;
+            Debug.Log("inventory: " + kv.Key);
             GameObject cloned = GameObject.Instantiate(InventoryCell);
             Button button = cloned.GetComponent<Button>();
             Sprite icon = GetAllIcons.icons[kv.Key];

@@ -50,6 +50,13 @@ namespace Gamekit3D
 
         }
 
+        public void ResetHP(HealthUI healthUI)
+        {
+            currentHitPoints = maxHitPoints;
+            m_timeSinceLastHit = 0.0f;
+            healthUI.ResetHP();
+        }
+
         public void ResetDamage()
         {
             currentHitPoints = maxHitPoints;

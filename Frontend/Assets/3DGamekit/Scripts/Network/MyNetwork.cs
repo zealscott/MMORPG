@@ -63,8 +63,8 @@ namespace Gamekit3D.Network
                 SceneManager.sceneLoaded += RecvSceneLoaded;
             }
 
-            // ask for mall info every 1 min
-            ThreadPool.QueueUserWorkItem(incomming.AskMallUpdate, 60000);
+            // ask for mall info every 5 min
+            ThreadPool.QueueUserWorkItem(incomming.AskMallUpdate, 300000);
         }
         void Start()
         {

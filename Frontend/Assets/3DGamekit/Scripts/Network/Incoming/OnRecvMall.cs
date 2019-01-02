@@ -16,7 +16,7 @@ namespace Gamekit3D.Network
             {
                 TreasureInfo.treasureMall.Add(tmp.Key, new TreasureMall().FromDTreasureMall(tmp.Value));
             }
-            MessageBox.Show("OnRecvMall");
+            //MessageBox.Show("OnRecvMall");
         }
     }
 }

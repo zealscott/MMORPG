@@ -54,5 +54,16 @@ namespace Gamekit3D
                 m_HealthIconAnimators[i].SetBool(m_HashActivePara, damageable.currentHitPoints >= i + 1);
             }
         }
+
+        public void ResetHP()
+        {
+            if (m_HealthIconAnimators == null)
+                return;
+
+            for (int i = 0; i < m_HealthIconAnimators.Length; i++)
+            {
+                m_HealthIconAnimators[i].SetBool(m_HashActivePara, true);
+            }
+        }
     }
 }

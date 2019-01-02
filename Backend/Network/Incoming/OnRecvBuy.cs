@@ -35,10 +35,11 @@ namespace Backend.Network
             // transaction for gold treasures
             if (request.totalGold > 0)
             {
-                SBuyGoldResult goldMessage = new SBuyGoldResult();
                 // for each gold treasure is a transaction
                 foreach (string goods in goldGoods)
                 {
+                    SBuyGoldResult goldMessage = new SBuyGoldResult();
+                    goldMessage.goodsName = goods;
                     price_ = backMall[goods].price;
                     seller_ = backMall[goods].ownerName;
                     Console.WriteLine("gold transcation: buyer: " + buyer_ + " seller: " + seller_ + " price: " + price_ + " goods: " + goods);
@@ -50,10 +51,6 @@ namespace Backend.Network
                     }
                     else
                     {
-                        goldMessage.success = true;
-                        goldMessage.goodsName = goods;
-                        // change player's goldCoin
-                        player.GoldNum -= price_;
                         // send to seller
                         if (OnlinePlayers.ContainsKey(seller_))
                         {
@@ -66,10 +63,14 @@ namespace Backend.Network
                             };                           
                             toPlayer.connection.Send(sellerMsg);                      
                         }
-                        // remove from backMall
+                        // remove from backMalls
                         backMall.Remove(goods);
+                        goldMessage.success = true;
+                        // change player's goldCoin
+                        player.GoldNum -= price_;
                     }
-                    channel.Send(goldMessage);
+                    Console.WriteLine("send goldMessage");
+                    player.connection.Send(goldMessage);
                 }
             }
 
