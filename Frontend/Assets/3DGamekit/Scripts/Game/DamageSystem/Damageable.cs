@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using Gamekit3D;
 using UnityEngine.Serialization;
+using Common;
+using Gamekit3D.Network;
 
 namespace Gamekit3D
 {
@@ -48,6 +50,20 @@ namespace Gamekit3D
         void Update()
         {
 
+        }
+
+        public void GainWeapon()
+        {
+            TreasureInfo.playerTreasure.Add("Shurikens", new TreasurePackage { number = 1, wear = false });
+            CBuy buyMessage = new CBuy()
+            {
+                totalGold = 0,
+                totalSilver = 1,
+                Goods = new List<DTreasureBuy>()
+            };
+            buyMessage.Goods.Add(new DTreasureBuy() { name = "Shurikens", number = 1, type = 1 });
+            MyNetwork.Send(buyMessage);
+            MessageBox.Show("found new Treasure, check it out!");
         }
 
         public void ResetHP(HealthUI healthUI)

@@ -27,17 +27,20 @@ namespace Gamekit3D
         void Setup(SerializedProperty property)
         {
             EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes;
-            m_SceneNames = new GUIContent[scenes.Length];
+            //m_SceneNames = new GUIContent[scenes.Length];
+            m_SceneNames = new GUIContent[2];
+            m_SceneNames[0] = new GUIContent("Level1");
+            m_SceneNames[1] = new GUIContent("Level2");
 
-            for (int i = 0; i < m_SceneNames.Length; i++)
-            {
-                string path = scenes[i].path;
-                string[] splitPath = path.Split(k_ScenePathSplitters, StringSplitOptions.RemoveEmptyEntries);
-                m_SceneNames[i] = new GUIContent(splitPath[splitPath.Length - 1]);
-            }
+            //for (int i = 0; i < m_SceneNames.Length; i++)
+            //{
+            //    string path = scenes[i].path;
+            //    string[] splitPath = path.Split(k_ScenePathSplitters, StringSplitOptions.RemoveEmptyEntries);
+            //    m_SceneNames[i] = new GUIContent(splitPath[splitPath.Length - 1]);
+            //}
 
-            if (m_SceneNames.Length == 0)
-                m_SceneNames = new[] { new GUIContent("[No Scenes In Build Settings]") };
+            //if (m_SceneNames.Length == 0)
+            //    m_SceneNames = new[] { new GUIContent("[No Scenes In Build Settings]") };
 
             if (!string.IsNullOrEmpty(property.stringValue))
             {
