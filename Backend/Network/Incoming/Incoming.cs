@@ -48,6 +48,10 @@ namespace Backend.Network
             register.Register(Command.C_GETCHATHISTORY, OnRecvGetChatHistory);
             register.Register(Command.C_NOT_SELL, OnRecvNotSell);
             register.Register(Command.C_USE_HP, OnRecvUseHp);
+            register.Register(Command.C_SEARCH_ADD_FRIEND, OnRecvSearchAddFriend);
+            register.Register(Command.C_ADD_FRIEND, OnRecvAddFriend);
+            register.Register(Command.C_FRIENDS, OnRecvCFriends);
+            register.Register(Command.C_FRIEND_REQUEST, OnRecvCFriendRequest);
         }
 
 

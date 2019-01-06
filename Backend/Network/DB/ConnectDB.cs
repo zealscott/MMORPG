@@ -23,5 +23,11 @@ namespace Backend.Network
         string GetChatHistorySQL = "SELECT fromwho,content FROM chatlog WHERE fromwho IN (@sender,@receiver) AND towho IN (@sender,@receiver) ORDER BY chattime DESC LIMIT @maxNum";
         string AddToPackageSQL = "INSERT INTO package(playername, treasurename, wear, ownnum) VALUES(@playername, @treasurename, false, 1)";
         string RemoveFromMallSQL = "Delete FROM mall WHERE ownername = @ownername AND treasurename = @treasurename";
+        string SearchFriendSQL = "SELECT playerid FROM player WHERE name = @name";
+        string AddFriendRequestSQL = "INSERT INTO friendrequest(fromname, toname) VALUES(@fromname, @toname)";
+        string FindFriendsSQL = "SELECT playername2 FROM friends WHERE playername1 = @name";
+        string FindRequestsSQL = "SELECT fromname FROM friendrequest WHERE toname = @name";
+        string AddFriendSQL = "INSERT INTO friends(playername1, playername2) VALUES(@playername1, @playername2)";
+        string DeleteFriendRequestSQL = "DELETE FROM friendrequest WHERE fromname = @fromname AND toname = @toname";
     }
 }

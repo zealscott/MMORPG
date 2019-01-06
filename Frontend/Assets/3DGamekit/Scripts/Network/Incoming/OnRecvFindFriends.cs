@@ -9,8 +9,8 @@ namespace Gamekit3D.Network
         private void OnRecvFindFriends(IChannel channel, Message message)
         {
             SFindFriends msg = message as SFindFriends;
-            PlayerInfo.friends = new Dictionary<int, string>(msg.friends);
-            PlayerInfo.friends.Remove(PlayerInfo.playerId);
+            PlayerInfo.online = new Dictionary<int, string>(msg.friends);
+            PlayerInfo.online.Remove(PlayerInfo.playerId);
         }
     }
 }

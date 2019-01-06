@@ -46,6 +46,9 @@ namespace Gamekit3D.Network
             register.Register(Command.S_BUY_GOLD_RESULT, OnRecvBuyGold);
             register.Register(Command.S_SEND_TO_SELLER, OnRecvSellSuccess);
             register.Register(Command.S_GETCHATHISTORY, OnRecvGetChatHistory);
+            register.Register(Command.S_NOT_EXIST_PERSON, OnRecvNotExistPerson);
+            register.Register(Command.S_FRIENDS, OnRecvFriends);
+            register.Register(Command.S_FIND_FRIEND_REQUEST, OnRecvFriendRequests);
         }
 
         public void InitNetworkEntity()

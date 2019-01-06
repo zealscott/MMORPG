@@ -23,9 +23,12 @@ namespace Gamekit3D
         static public int GoldNum = 10;
         static public int SilverNum = 10;
 
-        static public Dictionary<int, string> friends = new Dictionary<int, string>();
+        static public Dictionary<int, string> online = new Dictionary<int, string>();
         static public Dictionary<string, List<string>> chatMessage = new Dictionary<string, List<string>>();
         static public Dictionary<string, List<string>> chatHistory = new Dictionary<string, List<string>>();
         static public Dictionary<string, string> chatHistoryBitMap = new Dictionary<string, string>();
+
+        static public List<string> friendRequest = new List<string>();
+        static public List<string> friends = new List<string>();
     }
 }

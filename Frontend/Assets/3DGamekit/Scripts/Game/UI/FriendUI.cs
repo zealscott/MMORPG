@@ -58,7 +58,7 @@ public class FriendUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (KeyValuePair<int, string> friend in PlayerInfo.friends)
+        foreach (KeyValuePair<int, string> friend in PlayerInfo.online)
         {
             bool addFriend = true;
             foreach (GameObject tmp in closeFriends)
@@ -71,7 +71,7 @@ public class FriendUI : MonoBehaviour
 
             if(addFriend)
             {
-                MessageBox.Show("online friends count: " + PlayerInfo.friends.Count);
+                MessageBox.Show("online friends count: " + PlayerInfo.online.Count);
 
                 closeFriends.Add(GameObject.Instantiate(FriendInfo));
                 closeFriends[closeFriends.Count - 1].name = friend.Value;
@@ -95,9 +95,9 @@ public class FriendUI : MonoBehaviour
     {
         //Debug.Log(PlayerInfo.friends.Count);
 
-        MessageBox.Show("online friends count: " + PlayerInfo.friends.Count);
+        MessageBox.Show("online friends count: " + PlayerInfo.online.Count);
 
-        foreach (KeyValuePair<int, string> friend in PlayerInfo.friends)
+        foreach (KeyValuePair<int, string> friend in PlayerInfo.online)
         {
             closeFriends.Add(GameObject.Instantiate(FriendInfo));
             closeFriends[closeFriends.Count - 1].name = friend.Value;

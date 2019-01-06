@@ -65,6 +65,8 @@ namespace Gamekit3D.Network
 
             // ask for mall info every 5 min
             ThreadPool.QueueUserWorkItem(incomming.AskMallUpdate, 300000);
+            ThreadPool.QueueUserWorkItem(incomming.AskFriendUpdate, 300000);
+            ThreadPool.QueueUserWorkItem(incomming.AskFriendRequestUpdate, 300000);
         }
         void Start()
         {

@@ -36,6 +36,9 @@ namespace Common
         S_BUY_GOLD_RESULT,
         S_SEND_TO_SELLER,
         S_GETCHATHISTORY,
+        S_NOT_EXIST_PERSON,
+        S_FRIENDS,
+        S_FIND_FRIEND_REQUEST,        
         SEND,
         
 
@@ -61,6 +64,10 @@ namespace Common
         C_GETCHATHISTORY,
         C_NOT_SELL,
         C_USE_HP,
+        C_SEARCH_ADD_FRIEND,
+        C_ADD_FRIEND,
+        C_FRIENDS,
+        C_FRIEND_REQUEST,
         CEND,
         
 

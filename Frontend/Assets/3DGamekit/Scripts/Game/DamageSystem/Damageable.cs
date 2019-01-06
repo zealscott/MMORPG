@@ -54,7 +54,10 @@ namespace Gamekit3D
 
         public void GainWeapon()
         {
-            TreasureInfo.playerTreasure.Add("Shurikens", new TreasurePackage { number = 1, wear = false });
+            if (TreasureInfo.playerTreasure.ContainsKey("Shurikens"))
+                TreasureInfo.playerTreasure["Shurikens"].number++;
+            else
+                TreasureInfo.playerTreasure.Add("Shurikens", new TreasurePackage { number = 1, wear = false });
             CBuy buyMessage = new CBuy()
             {
                 totalGold = 0,

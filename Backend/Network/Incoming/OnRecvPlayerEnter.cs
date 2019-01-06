@@ -88,6 +88,20 @@ namespace Backend.Network
                 Console.WriteLine("from DB package: " + tmp.Key);
             }
             channel.Send(package);
+
+            // send friends
+            SFriends friendList = new SFriends()
+            {
+                friends = new List<string>(connect.GetFriends(player.user))
+            };
+            channel.Send(friendList);
+
+            // send friend requests
+            SFindFriendRequests requestList = new SFindFriendRequests()
+            {
+                requests = new List<string>(connect.GetFriendRequest(player.user))
+            };
+            channel.Send(requestList);
         }
     }
 }

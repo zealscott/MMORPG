@@ -9,6 +9,6 @@ namespace Common
         public CBuy() : base(Command.C_BUY) { }
         public int totalGold;
         public int totalSilver;
-        public List<DTreasureBuy> Goods;       
+        public List<DTreasureBuy> Goods;
     }
 }

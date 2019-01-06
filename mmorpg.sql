@@ -70,6 +70,21 @@ CREATE TABLE Mall
 );
 
 
+-- 好友关系表
+CREATE TABLE Friends
+(
+	PlayerName1 char(20),
+	PlayerName2 char(20)
+);
+
+-- 好友请求表
+CREATE TABLE FriendRequest
+(
+	FromName char(20),
+	ToName char(20)
+);
+
+
 -- 决斗记录
 CREATE TABLE Battle 
 (
