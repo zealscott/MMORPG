@@ -9,6 +9,7 @@ using Common;
 public class ChangeFunctionUI : MonoBehaviour
 {
     public GameObject Chat;
+    public GameObject Add;
     public GameObject Friend;
 
     private void Awake()
@@ -23,16 +24,24 @@ public class ChangeFunctionUI : MonoBehaviour
     }
 
 
+    public void ClickAdd()
+    {
+        Chat.SetActive(false);
+        Friend.SetActive(false);
+        Add.SetActive(true);
+    }
 
     public void ClickChat()
     {
         Chat.SetActive(true);
         Friend.SetActive(false);
+        Add.SetActive(false);
     }
 
     public void ClickFriend()
     {
         Chat.SetActive(false);
         Friend.SetActive(true);
+        Add.SetActive(false);
     }
 }

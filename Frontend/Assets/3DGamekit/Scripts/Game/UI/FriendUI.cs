@@ -71,7 +71,7 @@ public class FriendUI : MonoBehaviour
 
             if(addFriend)
             {
-                MessageBox.Show("online friends count: " + PlayerInfo.online.Count);
+                //MessageBox.Show("online friends count: " + PlayerInfo.online.Count);
 
                 closeFriends.Add(GameObject.Instantiate(FriendInfo));
                 closeFriends[closeFriends.Count - 1].name = friend.Value;
@@ -93,9 +93,7 @@ public class FriendUI : MonoBehaviour
 
     void Test()
     {
-        //Debug.Log(PlayerInfo.friends.Count);
-
-        MessageBox.Show("online friends count: " + PlayerInfo.online.Count);
+        //MessageBox.Show("online friends count: " + PlayerInfo.online.Count);
 
         foreach (KeyValuePair<int, string> friend in PlayerInfo.online)
         {

@@ -365,6 +365,7 @@
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\PlayerMoneyUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\RoleUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\SearchFriendUI.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\UI\SelfFriendUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\SelfSellItemUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\SelfSellUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\SellUI.cs" />

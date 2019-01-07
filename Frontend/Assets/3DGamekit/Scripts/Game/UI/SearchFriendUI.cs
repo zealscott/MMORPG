@@ -35,6 +35,7 @@ public class SearchFriendUI : MonoBehaviour
             }
             else
             {
+                MessageBox.Show("Send friend request successfully");
                 CSearchAddFriend msg = new CSearchAddFriend() { name = searchName };
                 MyNetwork.Send(msg);
             }          
