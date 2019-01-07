@@ -75,6 +75,13 @@ namespace Gamekit3D.Network
             return CloneGameObject(go, entityID);
         }
 
+        public Transform FindMyPlayerTransform()
+        {
+            if (PlayerInfo.playerId != 0 && PlayerInfo.MyTransform == null)
+                PlayerInfo.MyTransform = networkEntities[PlayerInfo.playerId].transform;
+            return null;
+        }
+
         public GameObject CloneGameObject(GameObject gameObject, int entityID)
         {
             GameObject go = GameObject.Instantiate(gameObject);

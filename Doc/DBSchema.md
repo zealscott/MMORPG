@@ -1,56 +1,67 @@
-### 数据库操作
-
 #### 数据库物理设计
 
-- **玩家表**
+- **玩家表** Player
 
-| PlayerID | Name     | Passwd   | Coin    | LevelValue | SpeedValue | IntelligenceValue | AttackValue | DefenseValue | HPValue | Last_Login | Last_find_treasure | Online  |
-| -------- | -------- | -------- | ------- | ---------- | ---------- | ----------------- | ----------- | ------------ | ------- | ---------- | ------------------ | ------- |
-| serial   | char(20) | char(30) | integer | smallint   | integer    | integer           | integer     | integer      | integer | TIMESTAMP  | TIMESTAMP          | boolean |
+| PlayerID           | Name              | Passwd            | GoldNum                     | SilverNum                   | LevelValue                               | SpeedValue         | IntelligenceValue  | AttackValue        | DefenseValue       | HPValue           | Last_Login | Last_find_treasure | Online  |
+| ------------------ | ----------------- | ----------------- | --------------------------- | --------------------------- | ---------------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ----------------- | ---------- | ------------------ | ------- |
+| serial primary key | char(20) not null | char(20) not null | integer not null default 20 | integer not null default 20 | smallint CHECK(LevelValue > 0) default 1 | integer default 10 | integer default 10 | integer default 10 | integer default 10 | integer default 5 | TIMESTAMP  | TIMESTAMP          | boolean |
+
+- **宝物表 **Treasures
+
+| TreasureID         | Name                     | MainType | SpeedValue | IntelligenceValue | AttackValue | DefenseValue |
+| ------------------ | ------------------------ | -------- | ---------- | ----------------- | ----------- | ------------ |
+| serial PRIMARY KEY | char(20) not null UNIQUE | integer  | integer    | integer           | integer     | integer      |
+
+
+
+- **玩家拥有宝物关系表** Package
+
+| PlayerName | TreasureName | Wear     | OwnNum |
+| ---------- | ------------ | -------- | ------ |
+| char(20)   | char(20)     | boolean default false | integer default 1 |
+
+
+
+- **交易市场出售宝物表** Mall
+
+| TreasureName | Price            | OwnerName               | IsGold                |
+| ------------ | ---------------- | ----------------------- | --------------------- |
+| char(20)     | integer not null | char(20) default 'mall' | boolean default false |
+
+
+
+- **交易记录表** Trade
+
+| TradeID            | ItemName | SellerName | BuyerName | IsGold  | Num                              | Price                     | TradeTime          |
+| ------------------ | -------- | ---------- | --------- | ------- | -------------------------------- | ------------------------- | ------------------ |
+| serial PRIMARY KEY | char(20) | char(20)   | char(20)  | boolean | integer CHECK(Num > 0) default 1 | integer CHECK(Price >= 0) | TIMESTAMP not null |
+
+
 
 - **聊天记录表**
 
-| FromWho           | ToWho             | Content | chatTime  |
-| ----------------- | ----------------- | ------- | --------- |
-| char(20) not null | char(20) not null | text    | TIMESTAMP |
+| FromWho           | ToWho             | Content | chatTime           |
+| ----------------- | ----------------- | ------- | ------------------ |
+| char(20) not null | char(20) not null | text    | TIMESTAMP not null |
 
-- **宝物表**
+- **好友关系表** Friends
 
-| TreasureID | Name     | AttributeValue | Type   |
-| ---------- | -------- | -------------- | ------ |
-| serial     | char(20) | integer        | t_type |
+| PlayerName1 | PlayerName2 |
+| ----------- | ----------- |
+| char(20)    | char(20)    |
 
-其中 `t_type` 为 `ENUM` ('speed', 'intelligence', 'attack', 'defence').
+PS:：PRIMARY KEY(PlayerName1, PlayerName2)
 
-- **玩家拥有宝物关系表**
 
-| PlayerID | TreasureID | Name     | Type   | AttributeValue | Wear    |
-| -------- | ---------- | -------- | ------ | -------------- | ------- |
-| integer  | integer    | char(20) | t_type | integer        | boolean |
+- **好友请求表** FriendRequest
 
-其中 `t_type` 为 `ENUM` ('speed', 'intelligence', 'attack', 'defence').
+| FromName | ToName   |
+| -------- | -------- |
+| char(20) | char(20) |
 
-- **交易市场出售宝物表**
+PS：PRIMARY KEY(FromName, ToName)
 
-| ItemID  | SellerID | Name     | Type   | AttributeValue | Price   |
-| ------- | -------- | -------- | ------ | -------------- | ------- |
-| integer | integer  | char(20) | t_type | integer        | integer |
-
-其中 `t_type` 为 `ENUM` ('speed', 'intelligence', 'attack', 'defence').
-
-- **决斗记录表**
-
-| BattleID | WinnerID | LoserID | FightTime |
-| -------- | -------- | ------- | --------- |
-| serial   | integer  | integer | TIMESTAMP |
-
-- **交易记录表**
-
-| TradeID | ItemID  | SellerID | BuyerID | Price   | TradeTime |
-| ------- | ------- | -------- | ------- | ------- | --------- |
-| serial  | integer | integer  | integer | integer | TIMESTAMP |
-
-## 数据库类型与NpgsqlDbType
+- **数据库类型与NpgsqlDbType**
 
 ```
 Postgresql  NpgsqlDbType System.DbType Enum .Net System Type

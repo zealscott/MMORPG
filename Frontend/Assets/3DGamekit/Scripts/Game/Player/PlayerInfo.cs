@@ -12,6 +12,7 @@ namespace Gamekit3D
         static public int playerId = 0;
         static public string name = "";
         static public string chatName = "";
+        static public Transform MyTransform;
 
         static public int currentHP = 5;
         static public int intelligence = 100;
@@ -30,5 +31,6 @@ namespace Gamekit3D
 
         static public List<string> friendRequest = new List<string>();
         static public List<string> friends = new List<string>();
+
     }
 }

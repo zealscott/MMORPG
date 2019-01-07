@@ -45,11 +45,10 @@ namespace Backend.Network
             SFindFriends response = new SFindFriends() { friends = SendDic };
             player.Broadcast(response);
 
-            Console.WriteLine("send find friends");
 
             // send treasure attributes   
             ConnectDB connect = new ConnectDB();
-            if (treasureAttributes.Count == 0 )
+            if (treasureAttributes.Count == 0)
             {
                 treasureAttributes = new Dictionary<string, DTreasure>(connect.GetTreasureAttri());
             }
@@ -57,14 +56,10 @@ namespace Backend.Network
             {
                 treasureAttri = new Dictionary<string, DTreasure>(treasureAttributes)
             };
-            foreach (KeyValuePair<string, DTreasure> tmp in treasureAttribute.treasureAttri)
-            {
-                Console.WriteLine("from DB attribute: " + tmp.Key);
-            }
             channel.Send(treasureAttribute);
 
             // send mall
-            if(backMall.Count == 0)
+            if (backMall.Count == 0)
             {
                 backMall = new Dictionary<string, DTreasureMall>(connect.DBGetMall());
             }
@@ -72,21 +67,13 @@ namespace Backend.Network
             {
                 goods = new Dictionary<string, DTreasureMall>(backMall)
             };
-            foreach (KeyValuePair<string, DTreasureMall> tmp in mall.goods)
-            {
-                Console.WriteLine("from DB mall: " + tmp.Key);
-            }
             channel.Send(mall);
 
             // send package
             SPackage package = new SPackage()
             {
-                goods = new Dictionary<string, DTreasurePackage>(connect.DBGetPackage(player.user))   
+                goods = new Dictionary<string, DTreasurePackage>(connect.DBGetPackage(player.user))
             };
-            foreach (KeyValuePair<string, DTreasurePackage> tmp in package.goods)
-            {
-                Console.WriteLine("from DB package: " + tmp.Key);
-            }
             channel.Send(package);
 
             // send friends

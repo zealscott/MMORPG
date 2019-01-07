@@ -33,7 +33,7 @@ public class FriendUI : MonoBehaviour
         button = worldChat.GetComponent<Button>();
         button.onClick.AddListener(delegate () {
             PlayerInfo.chatName = "WorldChat";
-            MessageBox.Show("start world chatting");
+            //MessageBox.Show("start world chatting");
         });
     }
 
@@ -84,7 +84,7 @@ public class FriendUI : MonoBehaviour
                 button = closeFriends[closeFriends.Count - 1].GetComponent<Button>();
                 button.onClick.AddListener(delegate () {
                     PlayerInfo.chatName = friend.Value;
-                    MessageBox.Show("currently chat with " + friend.Value);
+                    //MessageBox.Show("currently chat with " + friend.Value);
                 });
             }
             
@@ -109,7 +109,7 @@ public class FriendUI : MonoBehaviour
             button.onClick.AddListener(delegate() {
                 Debug.Log("Chat with " + friend.Value);
                 PlayerInfo.chatName = friend.Value;
-                MessageBox.Show("currently chat with " + friend.Value);
+                //MessageBox.Show("currently chat with " + friend.Value);
             });
         }
     }

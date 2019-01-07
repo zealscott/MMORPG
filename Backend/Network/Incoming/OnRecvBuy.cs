@@ -42,9 +42,9 @@ namespace Backend.Network
                     goldMessage.goodsName = goods;
                     price_ = backMall[goods].price;
                     seller_ = backMall[goods].ownerName;
-                    Console.WriteLine("gold transcation: buyer: " + buyer_ + " seller: " + seller_ + " price: " + price_ + " goods: " + goods);
+                    //Console.WriteLine("gold transcation: buyer: " + buyer_ + " seller: " + seller_ + " price: " + price_ + " goods: " + goods);
                     tmpJudge = connect.GoldTransaction(buyer_, seller_, price_, goods);
-                    Console.WriteLine("gold insert result: " + tmpJudge);
+                    //Console.WriteLine("gold insert result: " + tmpJudge);
                     if (tmpJudge == 0)
                     {
                         goldMessage.success = false;
@@ -60,8 +60,8 @@ namespace Backend.Network
                             {
                                 goldCoin = toPlayer.GoldNum,
                                 goodsName = goods
-                            };                           
-                            toPlayer.connection.Send(sellerMsg);                      
+                            };
+                            toPlayer.connection.Send(sellerMsg);
                         }
                         // remove from backMalls
                         backMall.Remove(goods);
@@ -69,7 +69,7 @@ namespace Backend.Network
                         // change player's goldCoin
                         player.GoldNum -= price_;
                     }
-                    Console.WriteLine("send goldMessage");
+                    //Console.WriteLine("send goldMessage");
                     player.connection.Send(goldMessage);
                 }
             }
@@ -84,30 +84,30 @@ namespace Backend.Network
                     List<string> NewsilverTs = new List<string>();
                     foreach (KeyValuePair<string, int> goods in newSilverGoods)
                     {
-                        Console.WriteLine("new silver: buyer:" + buyer_ + " goods: " + goods.Key + " num: " + goods.Value);
+                        //Console.WriteLine("new silver: buyer:" + buyer_ + " goods: " + goods.Key + " num: " + goods.Value);
                         NewsilverTs.Add(string.Format("('{0}','{1}','{2}')", buyer_, goods.Key, goods.Value));
-                        connect.AddTrade(goods.Key, "mall", buyer_, goods.Value, backMall[goods.Key].price);
+                        //connect.AddTrade(goods.Key, "mall", buyer_, goods.Value, backMall[goods.Key].price);
                     }
                     tmpJudge = connect.BuyNewSilverTreasure(NewsilverTs);
-                    Console.WriteLine("new silver insert result: " + tmpJudge);
+                    //Console.WriteLine("new silver insert result: " + tmpJudge);
                 }
 
                 if (oldSilverGoods.Count != 0)
                 {
                     foreach (KeyValuePair<string, int> goods in oldSilverGoods)
                     {
-                        Console.WriteLine("old silver: buyer:" + buyer_ + " goods: " + goods.Key + " num: " + goods.Value);
+                        //Console.WriteLine("old silver: buyer:" + buyer_ + " goods: " + goods.Key + " num: " + goods.Value);
                         tmpJudge = connect.UpdateTreasureNum(buyer_, goods.Key, goods.Value);
                         connect.AddTrade(goods.Key, "mall", buyer_, goods.Value, backMall[goods.Key].price);
-                        Console.WriteLine("old silver insert result: " + tmpJudge);
+                        //Console.WriteLine("old silver insert result: " + tmpJudge);
                     }
                 }
 
                 // minus silver coins
-                Console.WriteLine("silverNum update result: " + tmpJudge);
+                //Console.WriteLine("silverNum update result: " + tmpJudge);
                 player.SilverNum -= request.totalSilver;
-                Console.WriteLine("player: " + buyer_ + " silverNum minus: " + request.totalSilver);
-                tmpJudge = connect.UpdateSilverNum(buyer_, player.SilverNum);                
+                //Console.WriteLine("player: " + buyer_ + " silverNum minus: " + request.totalSilver);
+                tmpJudge = connect.UpdateSilverNum(buyer_, player.SilverNum);
             }
         }
     }

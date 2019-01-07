@@ -12,11 +12,15 @@ namespace Backend.Network
             Console.WriteLine("OnRecvCFriendRequest");
             Player player = (Player)channel.GetContent();
             ConnectDB connect = new ConnectDB();
-            SFindFriendRequests requestList = new SFindFriendRequests()
+            List<string> friendRequest = connect.GetFriendRequest(player.user);
+            if (friendRequest.Count > 0)
             {
-                requests = new List<string>(connect.GetFriendRequest(player.user))
-            };
-            channel.Send(requestList);
+                SFindFriendRequests requestList = new SFindFriendRequests()
+                {
+                    requests = new List<string>(friendRequest)
+                };
+                channel.Send(requestList);
+            }         
         }
         
     }

@@ -54,8 +54,12 @@ namespace Gamekit3D
 
         public void GainWeapon()
         {
+            int type = 1;
             if (TreasureInfo.playerTreasure.ContainsKey("Shurikens"))
+            {
                 TreasureInfo.playerTreasure["Shurikens"].number++;
+                type = 2;
+            }
             else
                 TreasureInfo.playerTreasure.Add("Shurikens", new TreasurePackage { number = 1, wear = false });
             CBuy buyMessage = new CBuy()
@@ -64,7 +68,7 @@ namespace Gamekit3D
                 totalSilver = 1,
                 Goods = new List<DTreasureBuy>()
             };
-            buyMessage.Goods.Add(new DTreasureBuy() { name = "Shurikens", number = 1, type = 1 });
+            buyMessage.Goods.Add(new DTreasureBuy() { name = "Shurikens", number = 1, type = type });
             MyNetwork.Send(buyMessage);
             MessageBox.Show("found new Treasure, check it out!");
         }
